@@ -13,7 +13,7 @@ import Flex from './common/DZFlex';
 
 const { Header, Footer, Content } = Layout;
 
-export const GREEN = "#38d67c";
+export const GREEN = "#37b86e";
 
 
 function App() {
@@ -51,28 +51,28 @@ function App() {
           Drizzle
         </Flex>
       </Flex>
-      <Flex width="80%">
-        <Flex height="100%" width="33%" margin="30px 30px 30px 0px" direction="column">
+      <Flex width="80%"  margin="30px 30px 30px 0px">
+        <Flex height="100%" width="33%" margin="0px 30px 0px 0px" direction="column">
           <Flex height="100px" width="100%" backgroundColor={GREEN}>
             USAGE GAL
           </Flex>
-          <Flex height="calc(50% - 110px)" width="100%" margin="30px 30px 30px 0px" backgroundColor={GREEN}>
+          <Flex height="calc(50% - 80px)" width="100%" margin="30px 30px 30px 0px" backgroundColor={GREEN}>
 
           </Flex>
-          <Flex height="calc(50% - 110px)" width="100%" margin="0px 30px 0px 0px" backgroundColor={GREEN}>
+          <Flex height="calc(50% - 80px)" width="100%" backgroundColor={GREEN}>
 
           </Flex>
         </Flex>
-        <Flex height="100%" width="66%" margin="30px 30px 30px 0px" direction="column">
+        <Flex height="100%" width="66%" direction="column">
           <Flex direction="row">
             <Flex height="100px" width="50%" margin="0px 30px 30px 0px" backgroundColor={GREEN}>
               USAGE HR
             </Flex>
-            <Flex height="100px" width="50%" margin="0px 0px 30px 0px" backgroundColor={GREEN}>
+            <Flex height="100px" width="50%" margin="0px 0px 0px 0px" backgroundColor={GREEN}>
               USAGE %/MONTH
             </Flex>
           </Flex>
-          <Flex height="calc(100% - 190px)" width="100%" margin="0px 30px 30px 0px" backgroundColor={GREEN}>
+          <Flex height="100%" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREEN}>
             USAGE %/MONTH
           </Flex>
         </Flex>
