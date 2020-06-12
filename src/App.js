@@ -8,12 +8,15 @@ import { isMobile } from 'react-device-detect';
 import { Calendar } from './components/Zones/Calendar';
 import Details from './components/Details';
 
-import Container from './common/DZContainer';
-import Flex from './common/DZFlex';
+import Container from './common/Container';
+import Flex from './common/Flex';
+import Title from './common/Title';
+import Branding from './components/Branding';
 
 const { Header, Footer, Content } = Layout;
 
 export const GREEN = "#37b86e";
+export const GREY = "#4d4d4d";
 
 
 function App() {
@@ -47,32 +50,32 @@ function App() {
   return (
     <Container backgroundColor="#353535">
       <Flex width="20%">
-        <Flex width="100%" margin="30px 30px 30px 30px" borderRadius backgroundColor={GREEN}>
-          Drizzle
+        <Flex width="100%" padding="20px" margin="30px 30px 30px 30px" borderRadius backgroundColor={GREY} boxShadow>
+          <Branding />
         </Flex>
       </Flex>
-      <Flex width="80%"  margin="30px 30px 30px 0px">
+      <Flex width="80%" margin="30px 30px 30px 0px">
         <Flex height="100%" width="33%" margin="0px 30px 0px 0px" direction="column">
-          <Flex height="100px" width="100%" backgroundColor={GREEN}>
+          <Flex title="Usage" padding="20px" height="100px" width="100%" backgroundColor={GREY} boxShadow>
             USAGE GAL
           </Flex>
-          <Flex height="calc(50% - 80px)" width="100%" margin="30px 30px 30px 0px" backgroundColor={GREEN}>
+          <Flex padding="20px" height="calc(50% - 80px)" width="100%" margin="30px 30px 30px 0px" backgroundColor={GREY} boxShadow>
 
           </Flex>
-          <Flex height="calc(50% - 80px)" width="100%" backgroundColor={GREEN}>
+          <Flex padding="20px" height="calc(50% - 80px)" width="100%" backgroundColor={GREY} boxShadow>
 
           </Flex>
         </Flex>
         <Flex height="100%" width="66%" direction="column">
           <Flex direction="row">
-            <Flex height="100px" width="50%" margin="0px 30px 30px 0px" backgroundColor={GREEN}>
+            <Flex padding="20px" height="100px" width="50%" margin="0px 30px 30px 0px" backgroundColor={GREY} boxShadow>
               USAGE HR
             </Flex>
-            <Flex height="100px" width="50%" margin="0px 0px 0px 0px" backgroundColor={GREEN}>
+            <Flex padding="20px" height="100px" width="50%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
               USAGE %/MONTH
             </Flex>
           </Flex>
-          <Flex height="100%" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREEN}>
+          <Flex padding="20px" height="100%" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
             USAGE %/MONTH
           </Flex>
         </Flex>

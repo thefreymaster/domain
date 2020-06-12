@@ -2,7 +2,7 @@
   "name": "rainmaker",
   "version": "1.0.0",
   "description": "Sprinkler system controller",
-  "main": "rainmaker.js",
+  "main": "index.js",
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -14,6 +14,7 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.1.5",
     "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "gpio": "^0.2.10",
     "lodash": "^4.17.15",
@@ -24,9 +25,10 @@
     "react-loader-spinner": "^3.1.14",
     "react-scripts": "3.2.0",
     "socket.io-client": "^2.3.0",
-    "ws": "^7.2.3"
+    "ws": "^7.3.0"
   },
   "scripts": {
+    "hue": "HUE_HOST=192.168.124.59 HUE_USERNAME=canvas hue-notification-ws",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
