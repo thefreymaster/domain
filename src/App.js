@@ -1,16 +1,11 @@
 import React from 'react';
 import './App.css';
-import Zones from "./components/Zones";
-import { Layout, Button } from 'antd';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShower, faHamburger, faBars, faFaucet } from '@fortawesome/free-solid-svg-icons'
-import { isMobile } from 'react-device-detect';
-import { Calendar } from './components/Zones/Calendar';
-import Details from './components/Details';
+import { Layout } from 'antd';
+import io from 'socket.io-client';
+
 
 import Container from './common/Container';
 import Flex from './common/Flex';
-import Title from './common/Title';
 import Branding from './components/Branding';
 
 const { Header, Footer, Content } = Layout;
@@ -18,6 +13,7 @@ const { Header, Footer, Content } = Layout;
 export const GREEN = "#37b86e";
 export const GREY = "#4d4d4d";
 
+const socket = io('http://localhost:6700');
 
 function App() {
   const [height, setHeight] = React.useState(window.innerHeight);
@@ -46,6 +42,12 @@ function App() {
   window.addEventListener('resize', () => {
     setHeight(window.innerHeight - 129)
   })
+
+  React.useLayoutEffect(() => {
+    socket.on('groups_update', (data) => {
+      console.log(data)
+    })
+  }, [])
 
   return (
     <Container backgroundColor="#353535">

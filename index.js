@@ -10,7 +10,6 @@ const _ = require('lodash');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 
-
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
@@ -179,6 +178,7 @@ app.get(`/api/groups`, (req, res) => {
                 }
             })
             console.log(_.compact(groups))
+            io.emit('groups_update', _.compact(groups));
             res.send(_.compact(groups));
         })
         .catch(function (error) {
