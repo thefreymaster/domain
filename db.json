@@ -1,216 +1,412 @@
 {
-  "0": {
-    "name": "Front Yard Center",
-    "zone": "1",
-    "active": false,
-    "uptime": null
-  },
-  "1": {
-    "name": "Front Yard Right",
-    "zone": "2",
-    "active": false,
-    "uptime": null
-  },
-  "2": {
-    "name": "Backyard",
-    "zone": "4",
-    "active": false,
-    "uptime": null
-  },
-  "3": {
-    "name": "Front Yard Flower Beds",
-    "zone": "5",
-    "active": false,
-    "uptime": null
-  },
-  "4": "s",
-  "zones": [
+  "rooms": [
     {
-      "name": "Front Yard Center",
-      "zone": "1",
-      "active": false,
-      "uptime": null
+      "analytics": [
+        {
+          "id": 0,
+          "month": "Jan",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 1,
+          "month": "Feb",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 2,
+          "month": "March",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 3,
+          "month": "April",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 4,
+          "month": "May",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 5,
+          "month": "June",
+          "totalTimeOn": 8099
+        },
+        {
+          "id": 6,
+          "month": "July",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 7,
+          "month": "August",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 8,
+          "month": "September",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 9,
+          "month": "October",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 10,
+          "month": "November",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 11,
+          "month": "December",
+          "totalTimeOn": 0
+        }
+      ],
+      "id": "2",
+      "name": "Office",
+      "on": false,
+      "lastOn": 1592080075832
     },
     {
-      "name": "Front Yard Right",
-      "zone": "2",
-      "active": false,
-      "uptime": null
+      "analytics": [
+        {
+          "id": 0,
+          "month": "Jan",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 1,
+          "month": "Feb",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 2,
+          "month": "March",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 3,
+          "month": "April",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 4,
+          "month": "May",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 5,
+          "month": "June",
+          "totalTimeOn": 8099
+        },
+        {
+          "id": 6,
+          "month": "July",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 7,
+          "month": "August",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 8,
+          "month": "September",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 9,
+          "month": "October",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 10,
+          "month": "November",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 11,
+          "month": "December",
+          "totalTimeOn": 0
+        }
+      ],
+      "id": "3",
+      "name": "Front Porch",
+      "on": false,
+      "lastOn": null
     },
     {
-      "name": "Backyard",
-      "zone": "4",
-      "active": false,
-      "uptime": null
+      "analytics": [
+        {
+          "id": 0,
+          "month": "Jan",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 1,
+          "month": "Feb",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 2,
+          "month": "March",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 3,
+          "month": "April",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 4,
+          "month": "May",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 5,
+          "month": "June",
+          "totalTimeOn": 8099
+        },
+        {
+          "id": 6,
+          "month": "July",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 7,
+          "month": "August",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 8,
+          "month": "September",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 9,
+          "month": "October",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 10,
+          "month": "November",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 11,
+          "month": "December",
+          "totalTimeOn": 0
+        }
+      ],
+      "id": "5",
+      "name": "Kitchen",
+      "on": false,
+      "lastOn": null
     },
     {
-      "name": "Front Yard Flower Beds",
-      "zone": "5",
-      "active": false,
-      "uptime": null
-    }
-  ],
-  "calendar": [
-    {
-      "day": "2020-05-03",
-      "value": 1
+      "analytics": [
+        {
+          "id": 0,
+          "month": "Jan",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 1,
+          "month": "Feb",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 2,
+          "month": "March",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 3,
+          "month": "April",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 4,
+          "month": "May",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 5,
+          "month": "June",
+          "totalTimeOn": 8099
+        },
+        {
+          "id": 6,
+          "month": "July",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 7,
+          "month": "August",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 8,
+          "month": "September",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 9,
+          "month": "October",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 10,
+          "month": "November",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 11,
+          "month": "December",
+          "totalTimeOn": 0
+        }
+      ],
+      "id": "7",
+      "name": "Living Room",
+      "on": true,
+      "lastOn": null
     },
     {
-      "day": "2020-05-05",
-      "value": 1
+      "analytics": [
+        {
+          "id": 0,
+          "month": "Jan",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 1,
+          "month": "Feb",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 2,
+          "month": "March",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 3,
+          "month": "April",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 4,
+          "month": "May",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 5,
+          "month": "June",
+          "totalTimeOn": 8099
+        },
+        {
+          "id": 6,
+          "month": "July",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 7,
+          "month": "August",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 8,
+          "month": "September",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 9,
+          "month": "October",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 10,
+          "month": "November",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 11,
+          "month": "December",
+          "totalTimeOn": 0
+        }
+      ],
+      "id": "9",
+      "name": "Bedroom",
+      "on": false,
+      "lastOn": null
     },
     {
-      "day": "2020-05-05",
-      "value": 1
-    },
-    {
-      "day": "2020-05-05",
-      "value": 1
-    },
-    {
-      "day": "2020-05-06",
-      "value": 1
-    },
-    {
-      "day": "2020-05-06",
-      "value": 1
-    },
-    {
-      "day": "2020-05-06",
-      "value": 1
-    }
-  ],
-  "system": {
-    "active": true
-  },
-  "bedroom": [
-    {
-      "month": "Jan",
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "month": "Feb",
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "month": "Apr",
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    }
-  ],
-  "livingroom": [
-    {
-      "month": "Jan",
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "month": "Feb",
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "month": "March",
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
-    },
-    {
-      "lastOn": null,
-      "totalTimeOn": 0,
-      "active": false
+      "analytics": [
+        {
+          "id": 0,
+          "month": "Jan",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 1,
+          "month": "Feb",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 2,
+          "month": "March",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 3,
+          "month": "April",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 4,
+          "month": "May",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 5,
+          "month": "June",
+          "totalTimeOn": 8099
+        },
+        {
+          "id": 6,
+          "month": "July",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 7,
+          "month": "August",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 8,
+          "month": "September",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 9,
+          "month": "October",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 10,
+          "month": "November",
+          "totalTimeOn": 0
+        },
+        {
+          "id": 11,
+          "month": "December",
+          "totalTimeOn": 0
+        }
+      ],
+      "id": "15",
+      "name": "Back Porch",
+      "on": false,
+      "lastOn": null
     }
   ]
 }

@@ -45,12 +45,6 @@ function App() {
     setHeight(window.innerHeight - 129)
   })
 
-  // React.useLayoutEffect(() => {
-  //   socket.on('groups_update', (data) => {
-  //     console.log(data)
-  //   })
-  // }, [])
-
   return (
     <Lumen.Provider socket={socket}>
       <Container backgroundColor="#353535">

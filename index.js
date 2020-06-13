@@ -15,141 +15,117 @@ const io = require('socket.io')(server);
 
 const port = 6700;
 
-const defaultDb = {
-    bedroom: [
-        {
-            month: "Jan",
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            month: "Feb",
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            month: "March",
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        }
-    ],
-    livingroom: [
-        {
-            month: "Jan",
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            month: "Feb",
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            month: "March",
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        },
-        {
-            lastOn: null,
-            totalTimeOn: 0,
-            active: false,
-        }
-    ]
+const defaultMonths = [
+    {
+        id: 0,
+        month: "Jan",
+        totalTimeOn: 0,
+    },
+    {
+        id: 1,
+        month: "Feb",
+        totalTimeOn: 0,
+    },
+    {
+        id: 2,
+        month: "March",
+        totalTimeOn: 0,
+    },
+    {
+        id: 3,
+        month: "April",
+        totalTimeOn: 0,
+    },
+    {
+        id: 4,
+        month: "May",
+        totalTimeOn: 0,
+    },
+    {
+        id: 5,
+        month: "June",
+        totalTimeOn: 0,
+    },
+    {
+        id: 6,
+        month: "July",
+        totalTimeOn: 0,
+    },
+    {
+        id: 7,
+        month: "August",
+        totalTimeOn: 0,
+    },
+    {
+        id: 8,
+        month: "September",
+        totalTimeOn: 0,
+    },
+    {
+        id: 9,
+        month: "October",
+        totalTimeOn: 0,
+    },
+    {
+        id: 10,
+        month: "November",
+        totalTimeOn: 0,
+    },
+    {
+        id: 11,
+        month: "December",
+        totalTimeOn: 0,
+    }
+]
+
+const setRoomOnStatus = (room) => {
+    db.get('rooms')
+        .find({ id: room.id })
+        .assign({ on: !room.on })
+        .write();
 }
 
-db.defaults(defaultDb)
-    .write()
+const setRoomTimeOn = (room) => {
+    db.get('rooms')
+        .find({ id: room.id })
+        .assign({ lastOn: new Date().getTime() })
+        .write();
+}
+
+const setRoomTimeToNone = (room) => {
+    db.get('rooms')
+        .find({ id: room.id })
+        .assign({ lastOn: null })
+        .write();
+}
+
+const setMonthlyTimeOn = (room) => {
+    const month = new Date().getMonth();
+    const now = new Date().getTime();
+    const timeOn = now - room.lastOn;
+    const roomsAnalytics = db.get('rooms')
+        .find({ id: room.id })
+        .get('analytics')
+        .find({ id: month })
+        .update('totalTimeOn', t => t + timeOn)
+        .value();
+}
+
+const getAnalytics = ({ newData, oldData }) => {
+    oldData.map((roomOld, index) => {
+        const roomNew = newData[index];
+        if (roomOld.on !== roomNew.on) {
+            if (!roomNew.on && roomOld.on) {
+                setMonthlyTimeOn(roomOld)
+            }
+            setRoomOnStatus(roomOld);
+            if (roomNew.on) {
+                setRoomTimeOn(roomOld)
+            }
+        }
+    })
+    console.log({ newData, oldData })
+}
 
 const getGroups = () => {
     setTimeout(() => {
@@ -162,7 +138,28 @@ const getGroups = () => {
                         return group;
                     }
                 })
-                console.log(_.compact(groups))
+                const compactGroups = _.compact(groups);
+                const newData = compactGroups.map(group => {
+                    return {
+                        id: group.id,
+                        on: group.action.on,
+                    }
+                })
+                console.log(compactGroups)
+                if (!db.has('rooms').value()) {
+                    db.defaults({ rooms: [] })
+                        .write()
+                    compactGroups.map((group) => {
+                        db.get('rooms').push({
+                            analytics: defaultMonths,
+                            id: group.id,
+                            name: group.name,
+                            on: group.action.on,
+                            lastOn: null,
+                        }).write();
+                    })
+                }
+                getAnalytics({ newData, oldData: db.get('rooms').value() })
                 io.emit('groups_update', _.compact(groups));
                 getGroups();
             })

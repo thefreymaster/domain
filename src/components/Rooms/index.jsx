@@ -3,6 +3,7 @@ import * as Lumen from "../../Context";
 import Flex from '../../common/Flex';
 import { Switch } from 'antd';
 import { turnRoomOff, turnRoomOn } from '../../api/rest';
+import TitleAndDescription from '../../common/TitleAndDescription';
 
 const Rooms = (props) => {
     const [loading, setLoading] = React.useState(0);
@@ -36,10 +37,7 @@ const Rooms = (props) => {
         return (
             <Flex alignItems="center" direction="row" style={style.item}>
                 <Switch loading={loading == room.id} checked={room.action.on} onChange={() => handleChange({ on: room.action.on, id: room.id, setLoading, room })} />
-                <Flex direction="column">
-                    <div style={style.name}>{room.name}</div>
-                    <div style={style.description}>{room.state.all_on ? "All lights on" : room.state.any_on ? "Some lights on" : "No lights on"}</div>
-                </Flex>
+                <TitleAndDescription title={room.name} description={room.state.all_on ? "All lights on" : room.state.any_on ? "Some lights on" : "No lights on"} />
             </Flex>
         )
     })
