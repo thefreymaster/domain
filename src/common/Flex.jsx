@@ -16,12 +16,15 @@ const Flex = (props) => {
         flexWrap: props.flexWrap,
         boxShadow: props.boxShadow && `0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)`,
         padding: props.padding,
+        ...props.style,
     }
     return (
-        <div style={inline}>
-            <Title style={{position: 'fixed', top: 0}}>{props.title}</Title>
-            {props.children}
-        </div>
+        <React.Fragment>
+            <Title style={{ maxHeight: 30 }}>{props.title}</Title>
+            <div style={inline}>
+                {props.children}
+            </div>
+        </React.Fragment>
     )
 }
 

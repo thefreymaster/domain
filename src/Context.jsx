@@ -1,4 +1,6 @@
 import React from 'react';
+import { isEqual } from 'lodash';
+import { getRooms } from './api/rest';
 
 const defaultState = {
     zones: [{
@@ -34,9 +36,35 @@ const defaultState = {
 
 export const Context = React.createContext(defaultState);
 
+const reducer = (state, action) => {
+    const newState = { ...state };
+    switch (action.type) {
+        case 'SET_ROOMS':
+            newState.rooms = action.payload;
+            break;
+        default:
+            throw new Error();
+    }
+    return newState;
+}
+
+const initialState = { rooms: [], isLoading: false };
+
 export const Provider = (props) => {
+    const [state, dispatch] = React.useReducer(reducer, initialState);
+    console.log(state)
+    React.useLayoutEffect(() => {
+        const rooms = getRooms();
+        rooms.then((res) => {
+            dispatch({ type: 'SET_ROOMS', payload: res.data })
+        })
+        props.socket.on('groups_update', (data) => {
+            dispatch({ type: 'SET_ROOMS', payload: data })
+        })
+    }, [])
+
     return (
-        <Context.Provider>
+        <Context.Provider value={{ ...state, dispatch }}>
             {props.children}
         </Context.Provider>
     )

@@ -152,34 +152,65 @@ db.defaults(defaultDb)
     .write()
 
 const getGroups = () => {
-    axios.get(`${process.env.HUE_HOST}/api/${process.env.HUE_TOKEN}/groups`)
-        .then(function (response) {
-            const groups = Object.keys(response.data).map(key => {
-                const group = response.data[key];
-                if (group.type === "Room") {
-                    return group;
-                }
+    setTimeout(() => {
+        axios.get(`${process.env.HUE_HOST}/api/${process.env.HUE_TOKEN}/groups`)
+            .then(function (response) {
+                const groups = Object.keys(response.data).map(key => {
+                    const group = response.data[key];
+                    if (group.type === "Room") {
+                        group.id = key;
+                        return group;
+                    }
+                })
+                console.log(_.compact(groups))
+                io.emit('groups_update', _.compact(groups));
+                getGroups();
             })
-            console.log(_.compact(groups))
-            io.emit('groups_update', _.compact(groups));
-        })
-        .catch(function (error) {
-            console.log(error);
-        })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }, 2000);
 }
 
-app.get(`/api/groups`, (req, res) => {
+app.get(`/api/rooms`, (req, res) => {
     axios.get(`${process.env.HUE_HOST}/api/${process.env.HUE_TOKEN}/groups`)
         .then(function (response) {
             const groups = Object.keys(response.data).map(key => {
                 const group = response.data[key];
                 if (group.type === "Room") {
+                    group.id = key;
                     return group;
                 }
             })
             console.log(_.compact(groups))
             io.emit('groups_update', _.compact(groups));
             res.send(_.compact(groups));
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+})
+
+app.get(`/api/room/on/:id`, (req, res) => {
+    const { id } = req.params;
+    axios.put(`${process.env.HUE_HOST}/api/${process.env.HUE_TOKEN}/groups/${id}/action`, {
+        "on": true
+    })
+        .then(function (response) {
+            res.send({ success: true });
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+})
+
+app.get(`/api/room/off/:id`, (req, res) => {
+    const { id } = req.params;
+    axios.put(`${process.env.HUE_HOST}/api/${process.env.HUE_TOKEN}/groups/${id}/action`, {
+        "on": false
+    })
+        .then(function (response) {
+            res.send({ success: true });
         })
         .catch(function (error) {
             console.log(error);
