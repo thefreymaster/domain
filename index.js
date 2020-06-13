@@ -197,6 +197,7 @@ app.get(`/api/room/on/:id`, (req, res) => {
         "on": true
     })
         .then(function (response) {
+            getGroups();
             res.send({ success: true });
         })
         .catch(function (error) {
@@ -210,6 +211,7 @@ app.get(`/api/room/off/:id`, (req, res) => {
         "on": false
     })
         .then(function (response) {
+            getGroups();
             res.send({ success: true });
         })
         .catch(function (error) {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Flex = (props) => {
+const Title = (props) => {
     const inline = {
         color: 'white',
         fontSize: 18,
@@ -10,4 +10,4 @@ const Flex = (props) => {
     return <div style={inline}>{props.children}</div>
 }
 
-export default Flex;
+export default Title;

@@ -16,21 +16,30 @@ const Rooms = (props) => {
 
     const style = {
         item: {
-            padding: '20px 0px 20px 0px',
+            padding: '12px 0px 12px 0px',
             color: 'white',
             fontFamily: '"Fredoka One", cursive',
         },
         name: {
             marginLeft: 10,
+        },
+        description: {
+            fontSize: 11,
+            marginLeft: 10,
+            color: '#ffffff6b',
+            fontFamily: '"Fredoka One", cursive',
         }
     }
 
     return rooms.map(room => {
         console.log(room)
         return (
-            <Flex direction="row" style={style.item}>
+            <Flex alignItems="center" direction="row" style={style.item}>
                 <Switch loading={loading == room.id} checked={room.action.on} onChange={() => handleChange({ on: room.action.on, id: room.id, setLoading, room })} />
-                <div style={style.name}>{room.name}</div>
+                <Flex direction="column">
+                    <div style={style.name}>{room.name}</div>
+                    <div style={style.description}>{room.state.all_on ? "All lights on" : room.state.any_on ? "Some lights on" : "No lights on"}</div>
+                </Flex>
             </Flex>
         )
     })

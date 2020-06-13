@@ -55,19 +55,19 @@ function App() {
     <Lumen.Provider socket={socket}>
       <Container backgroundColor="#353535">
         <Flex width="20%">
-          <Flex width="100%" padding="20px" margin="30px 30px 30px 30px" borderRadius backgroundColor={GREY} boxShadow>
+          <Flex borderRadius="20px" width="100%" padding="20px" margin="30px 30px 30px 30px" backgroundColor={GREY} boxShadow>
             <Branding />
           </Flex>
         </Flex>
         <Flex width="80%" margin="30px 30px 30px 0px">
           <Flex height="100%" width="33%" margin="0px 30px 0px 0px" direction="column">
-            <Flex title="Usage" padding="20px" height="100px" width="100%" backgroundColor={GREY} boxShadow>
+            <Flex borderRadius="20px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={GREY} boxShadow>
               USAGE GAL
-          </Flex>
-            <Flex justifyContent="center" title="Rooms" direction="column" padding="20px" height="calc(75% - 80px)" width="100%" margin="0px 30px 0px 0px" backgroundColor={GREY} boxShadow>
+            </Flex>
+            <Flex borderRadius="20px" justifyContent="center" title="Rooms" direction="column" padding="20px" height="calc(75% - 80px)" width="100%" margin="0px 30px 0px 0px" backgroundColor={GREY} boxShadow>
               <Rooms />
             </Flex>
-            <Flex title="Power" padding="20px" height="calc(25% - 80px)" width="100%" backgroundColor={GREY} boxShadow>
+            <Flex borderRadius="20px" title="Power" padding="20px" height="calc(25% - 80px)" width="100%" backgroundColor={GREY} boxShadow>
               <div>
                 <div>Test2</div>
               </div>
@@ -75,14 +75,14 @@ function App() {
           </Flex>
           <Flex height="100%" width="66%" direction="column">
             <Flex direction="row">
-              <Flex padding="20px" height="100px" width="50%" margin="0px 30px 30px 0px" backgroundColor={GREY} boxShadow>
+              <Flex borderRadius="20px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={GREY} boxShadow>
                 USAGE HR
             </Flex>
-              <Flex padding="20px" height="100px" width="50%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
+              <Flex borderRadius="20px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={GREY} boxShadow>
                 USAGE %/MONTH
             </Flex>
             </Flex>
-            <Flex padding="20px" height="100%" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
+            <Flex borderRadius="20px" title="Month" padding="20px" height="100%" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
               USAGE %/MONTH
           </Flex>
           </Flex>
