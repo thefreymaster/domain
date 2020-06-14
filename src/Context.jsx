@@ -40,7 +40,8 @@ const reducer = (state, action) => {
     const newState = { ...state };
     switch (action.type) {
         case 'SET_ROOMS':
-            newState.rooms = action.payload;
+            newState.rooms = action.payload.rooms;
+            newState.house = action.payload.house;
             break;
         default:
             throw new Error();
@@ -48,7 +49,7 @@ const reducer = (state, action) => {
     return newState;
 }
 
-const initialState = { rooms: [], isLoading: false };
+const initialState = { rooms: [], house: {}, isLoading: false };
 
 export const Provider = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);

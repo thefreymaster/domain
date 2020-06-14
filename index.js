@@ -99,16 +99,23 @@ const setRoomTimeToNone = (room) => {
         .write();
 }
 
+const setHouseTimeOn = (monthTime) => {
+    db.get('house')
+        .update('totalTimeOn', t => t + monthTime)
+        .write();
+}
+
 const setMonthlyTimeOn = (room) => {
     const month = new Date().getMonth();
     const now = new Date().getTime();
     const timeOn = now - room.lastOn;
-    const roomsAnalytics = db.get('rooms')
+    db.get('rooms')
         .find({ id: room.id })
         .get('analytics')
         .find({ id: month })
         .update('totalTimeOn', t => t + timeOn)
-        .value();
+        .write();
+    setHouseTimeOn(timeOn);
 }
 
 const getAnalytics = ({ newData, oldData }) => {
@@ -147,7 +154,11 @@ const getGroups = () => {
                 })
                 console.log(compactGroups)
                 if (!db.has('rooms').value()) {
-                    db.defaults({ rooms: [] })
+                    db.defaults({
+                        rooms: [], house: {
+                            totalTimeOn: 0
+                        }
+                    })
                         .write()
                     compactGroups.map((group) => {
                         db.get('rooms').push({
@@ -160,7 +171,7 @@ const getGroups = () => {
                     })
                 }
                 getAnalytics({ newData, oldData: db.get('rooms').value() })
-                io.emit('groups_update', _.compact(groups));
+                io.emit('groups_update', db.getState());
                 getGroups();
             })
             .catch(function (error) {
@@ -180,8 +191,8 @@ app.get(`/api/rooms`, (req, res) => {
                 }
             })
             console.log(_.compact(groups))
-            io.emit('groups_update', _.compact(groups));
-            res.send(_.compact(groups));
+            io.emit('groups_update', db.getState());
+            res.send(db.getState());
         })
         .catch(function (error) {
             console.log(error);
@@ -214,6 +225,13 @@ app.get(`/api/room/off/:id`, (req, res) => {
         .catch(function (error) {
             console.log(error);
         })
+})
+
+app.get(`/api/analytics`, (req, res) => {
+    const { roomId } = req.params;
+    const month = new Date().getMonth();
+
+    res.send(db.getState());
 })
 
 server.listen(port, () => {

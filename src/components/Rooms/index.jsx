@@ -7,7 +7,8 @@ import TitleAndDescription from '../../common/TitleAndDescription';
 
 const Rooms = (props) => {
     const [loading, setLoading] = React.useState(0);
-    const { rooms, isLoading } = React.useContext(Lumen.Context);
+
+    const context = React.useContext(Lumen.Context);
 
     const handleChange = ({ on, id, setLoading, room }) => {
         setLoading(id.toString());
@@ -32,12 +33,12 @@ const Rooms = (props) => {
         }
     }
 
-    return rooms.map(room => {
+    return context.rooms.map(room => {
         console.log(room)
         return (
             <Flex alignItems="center" direction="row" style={style.item}>
-                <Switch loading={loading == room.id} checked={room.action.on} onChange={() => handleChange({ on: room.action.on, id: room.id, setLoading, room })} />
-                <TitleAndDescription title={room.name} description={room.state.all_on ? "All lights on" : room.state.any_on ? "Some lights on" : "No lights on"} />
+                <Switch loading={loading == room.id} checked={room.on} onChange={() => handleChange({ on: room.on, id: room.id, setLoading, room })} />
+                <TitleAndDescription title={room.name} description={room.on ? "All lights on" : "No lights on"} />
             </Flex>
         )
     })
