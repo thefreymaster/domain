@@ -38,7 +38,7 @@ const Rooms = (props) => {
         return (
             <Flex alignItems="center" direction="row" style={style.item}>
                 <Switch loading={loading == room.id} checked={room.on} onChange={() => handleChange({ on: room.on, id: room.id, setLoading, room })} />
-                <TitleAndDescription title={room.name} description={room.on ? "All lights on" : "No lights on"} />
+                <TitleAndDescription fontSize={14} title={room.name} description={room.on ? "All lights on" : "No lights on"} />
             </Flex>
         )
     })

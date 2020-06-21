@@ -1,6 +1,6 @@
 import React from 'react';
 import { isEqual } from 'lodash';
-import { getRooms } from './api/rest';
+import { getRooms, getAnalytics } from './api/rest';
 
 const defaultState = {
     zones: [{
@@ -31,7 +31,8 @@ const defaultState = {
         amount: 0,
         time: 0,
         change: 0,
-    }
+    },
+    analytics: {}
 }
 
 export const Context = React.createContext(defaultState);
@@ -42,6 +43,9 @@ const reducer = (state, action) => {
         case 'SET_ROOMS':
             newState.rooms = action.payload.rooms;
             newState.house = action.payload.house;
+            break;
+        case 'SET_ANALYTICS':
+            newState.analytics = action.payload;
             break;
         default:
             throw new Error();

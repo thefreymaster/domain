@@ -48,6 +48,15 @@ export const getRooms = () => axios.get('/api/rooms')
         console.log(error);
     })
 
+export const getAnalytics = () => axios.get('/api/analytics')
+    .then(response => {
+        return response
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+
 export const turnRoomOn = (id, setLoading) => axios.get(`/api/room/on/${id}`)
     .then(response => {
         setLoading(0);

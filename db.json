@@ -30,7 +30,7 @@
         {
           "id": 5,
           "month": "June",
-          "totalTimeOn": 227014
+          "totalTimeOn": 6090
         },
         {
           "id": 6,
@@ -66,7 +66,7 @@
       "id": "2",
       "name": "Office",
       "on": false,
-      "lastOn": 1592105343487
+      "lastOn": 1592760946088
     },
     {
       "analytics": [
@@ -98,7 +98,7 @@
         {
           "id": 5,
           "month": "June",
-          "totalTimeOn": 55898
+          "totalTimeOn": 6090
         },
         {
           "id": 6,
@@ -133,8 +133,8 @@
       ],
       "id": "3",
       "name": "Front Porch",
-      "on": true,
-      "lastOn": 1592105793287
+      "on": false,
+      "lastOn": null
     },
     {
       "analytics": [
@@ -166,7 +166,7 @@
         {
           "id": 5,
           "month": "June",
-          "totalTimeOn": 1592105340714
+          "totalTimeOn": 6090
         },
         {
           "id": 6,
@@ -201,8 +201,8 @@
       ],
       "id": "5",
       "name": "Kitchen",
-      "on": true,
-      "lastOn": 1592105779109
+      "on": false,
+      "lastOn": null
     },
     {
       "analytics": [
@@ -234,7 +234,7 @@
         {
           "id": 5,
           "month": "June",
-          "totalTimeOn": 0
+          "totalTimeOn": 6090
         },
         {
           "id": 6,
@@ -269,7 +269,7 @@
       ],
       "id": "7",
       "name": "Living Room",
-      "on": true,
+      "on": false,
       "lastOn": null
     },
     {
@@ -302,7 +302,7 @@
         {
           "id": 5,
           "month": "June",
-          "totalTimeOn": 301526
+          "totalTimeOn": 6090
         },
         {
           "id": 6,
@@ -338,7 +338,7 @@
       "id": "9",
       "name": "Bedroom",
       "on": false,
-      "lastOn": 1592105343491
+      "lastOn": null
     },
     {
       "analytics": [
@@ -370,7 +370,7 @@
         {
           "id": 5,
           "month": "June",
-          "totalTimeOn": 131221
+          "totalTimeOn": 6090
         },
         {
           "id": 6,
@@ -406,10 +406,10 @@
       "id": "15",
       "name": "Back Porch",
       "on": false,
-      "lastOn": 1592105598225
+      "lastOn": null
     }
   ],
   "house": {
-    "totalTimeOn": 1592106056373
+    "totalTimeOn": 6090
   }
 }

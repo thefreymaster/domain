@@ -9,7 +9,10 @@ const TitleAndDescription = (props) => {
             fontFamily: '"Fredoka One", cursive',
         },
         name: {
+            fontSize: props.fontSize,
             marginLeft: 10,
+            color: 'white',
+            fontFamily: '"Fredoka One", cursive',
         },
         description: {
             fontSize: 11,
