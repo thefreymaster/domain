@@ -116,12 +116,10 @@ const setMonthlyTimeOn = (room) => {
     const month = new Date().getMonth();
     const now = new Date().getTime();
     const timeOn = now - room.lastOn;
-    db.get('rooms')
-        .find({ id: room.id })
-        .get('analytics')
-        .find({ id: month })
-        .update('totalTimeOn', t => t + timeOn)
-        .write();
+    const [stuff] = db.get('rooms')
+        .filter({ id: room.id })
+        .value()
+    stuff.analytics[month].totalTimeOn = timeOn;
     setHouseTimeOn(timeOn, room);
 }
 
@@ -129,7 +127,7 @@ const getAnalytics = ({ newData, oldData }) => {
     oldData.map((roomOld, index) => {
         const roomNew = newData[index];
         if (roomOld.on !== roomNew.on) {
-            if (roomNew.id === roomOld.id) {
+            if (roomOld.on && !roomNew.on && roomNew.id === roomOld.id) {
                 setMonthlyTimeOn(roomOld)
             }
             setRoomOnStatus(roomOld);
