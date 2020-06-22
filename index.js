@@ -130,7 +130,7 @@ const getAnalytics = ({ newData, oldData }) => {
     oldData.map((roomOld, index) => {
         const roomNew = newData[index];
         if (roomOld.on !== roomNew.on) {
-            if (!roomOld.on && roomNew.on && roomNew.id === roomOld.id) {
+            if (roomOld.on && !roomNew.on && roomNew.id === roomOld.id) {
                 setMonthlyTimeOn(roomOld)
             }
             setRoomOnStatus(roomOld);
