@@ -32,7 +32,9 @@ const defaultState = {
         time: 0,
         change: 0,
     },
-    analytics: {}
+    house: {
+        totalTimeOn: 0,
+    }
 }
 
 export const Context = React.createContext(defaultState);
@@ -53,15 +55,19 @@ const reducer = (state, action) => {
     return newState;
 }
 
-const initialState = { rooms: [], house: {}, isLoading: false };
+const initialState = { rooms: [], house: { 
+    analytics: [],
+    totalPowerOn: 0,
+}, isLoading: false };
 
 export const Provider = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
-    console.log(state)
     React.useLayoutEffect(() => {
         const rooms = getRooms();
         rooms.then((res) => {
             dispatch({ type: 'SET_ROOMS', payload: res.data })
+            console.log(state)
+
         })
         props.socket.on('groups_update', (data) => {
             dispatch({ type: 'SET_ROOMS', payload: data })

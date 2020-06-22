@@ -11,6 +11,9 @@ import * as Lumen from "./Context";
 import Rooms from './components/Rooms';
 import TitleAndDescription from './common/TitleAndDescription';
 import Power from './components/Power';
+import Hours from './components/Hours';
+import Status from './components/Status';
+import Active from './components/Active';
 
 const { Header, Footer, Content } = Layout;
 
@@ -51,8 +54,9 @@ function App() {
     <Lumen.Provider socket={socket}>
       <Container backgroundColor="#353535">
         <Flex width="20%">
-          <Flex borderRadius="20px" width="100%" padding="20px" margin="30px 30px 30px 30px" backgroundColor={GREY} boxShadow>
+          <Flex direction="column" alignItems="center" borderRadius="20px" width="100%" padding="20px" margin="30px 30px 30px 30px" backgroundColor={GREY} boxShadow>
             <Branding />
+            <Status />
           </Flex>
         </Flex>
         <Flex width="80%" margin="30px 30px 30px 0px">
@@ -64,13 +68,13 @@ function App() {
               <Rooms />
             </Flex>
             <Flex borderRadius="20px" title="Most Active" padding="20px" height="calc(25% - 80px)" width="100%" backgroundColor={GREY} boxShadow>
-              <TitleAndDescription fontSize={20} title="Living Room" description="Most used room" />
+              <Active />
             </Flex>
           </Flex>
           <Flex height="100%" width="66%" direction="column">
             <Flex direction="row">
               <Flex borderRadius="20px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={GREY} boxShadow>
-                <TitleAndDescription fontSize={28} title="23H" description="Hours On" />
+                <Hours />
               </Flex>
               <Flex borderRadius="20px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={GREY} boxShadow>
                 <TitleAndDescription fontSize={28} title="34%^" description="Change since last month" />

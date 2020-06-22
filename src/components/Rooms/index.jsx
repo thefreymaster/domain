@@ -34,7 +34,6 @@ const Rooms = (props) => {
     }
 
     return context.rooms.map(room => {
-        console.log(room)
         return (
             <Flex alignItems="center" direction="row" style={style.item}>
                 <Switch loading={loading == room.id} checked={room.on} onChange={() => handleChange({ on: room.on, id: room.id, setLoading, room })} />

@@ -10,13 +10,13 @@ const TitleAndDescription = (props) => {
         },
         name: {
             fontSize: props.fontSize,
-            marginLeft: 10,
+            marginLeft: props.noMargin ? 0 : 10,
             color: 'white',
             fontFamily: '"Fredoka One", cursive',
         },
         description: {
             fontSize: 11,
-            marginLeft: 10,
+            marginLeft: props.noMargin ? 0 : 10,
             color: '#ffffff6b',
             fontFamily: '"Fredoka One", cursive',
         }
