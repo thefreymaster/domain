@@ -9,15 +9,17 @@ const Breakdown = () => {
     if (context.rooms.length === 0) {
         return null
     }
+    const [houseAnalytics] = filter(context.house.analytics, { id: new Date().getMonth() });
     const data = context.rooms.map(room => {
         const [roomAnalytics] = filter(room.analytics, { id: new Date().getMonth() });
         const roomData = {
             label: room.name,
             id: room.name,
-            value: getHours(roomAnalytics.totalTimeOn),
+            value: (roomAnalytics.totalTimeOn / houseAnalytics.totalTimeOn).toFixed(2),
         }
         return roomData;
     })
+
     return (
         <ResponsivePie
             data={data}
