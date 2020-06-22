@@ -21,7 +21,7 @@ const { Header, Footer, Content } = Layout;
 export const GREEN = "#37b86e";
 export const GREY = "#4d4d4d";
 
-const socket = io('http://localhost:6700');
+const socket = io('http://192.168.124.22:6700');
 
 function App() {
   const [height, setHeight] = React.useState(window.innerHeight);
