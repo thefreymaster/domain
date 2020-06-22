@@ -18,7 +18,6 @@ const Breakdown = () => {
         }
         return roomData;
     })
-    debugger
     return (
         <ResponsivePie
             data={data}
