@@ -10,6 +10,11 @@ const _ = require('lodash');
 const adapter = new FileSync('db.json');
 const db = low(adapter);
 
+
+app.use(express.json());
+app.use(express.static(__dirname + '/build'));
+app.use(express.static(__dirname + '/images'));
+
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
@@ -241,6 +246,10 @@ app.get(`/api/analytics`, (req, res) => {
 
     res.send(db.getState());
 })
+
+app.get('/*', function (request, response) {
+    response.sendFile(path.resolve(__dirname, 'build/index.html'));
+});
 
 server.listen(port, () => {
     getGroups();
