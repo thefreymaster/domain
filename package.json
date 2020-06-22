@@ -9,6 +9,7 @@
     "@nivo/calendar": "^0.61.1",
     "@nivo/heatmap": "^0.61.0",
     "@nivo/line": "^0.61.1",
+    "@nivo/pie": "^0.62.0",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",

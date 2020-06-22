@@ -11,7 +11,7 @@ const Status = () => {
             bubble: {
                 height: 30,
                 width: 30,
-                backgroundColor: room.on ? '#6ab8ff' : '#cccccc',
+                backgroundColor: room.on ? '#ffd34d' : '#cccccc',
                 borderRadius: 50,
                 marginBottom: 5,
                 border: "4px solid grey",

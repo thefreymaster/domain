@@ -103,10 +103,10 @@ const setRoomTimeToNone = (room) => {
 
 const setHouseTimeOn = (timeOn, room) => {
     const month = new Date().getMonth();
-    db.get('house')
-        .find({ id: month })
-        .update('totalTimeOn', t => t + timeOn)
-        .write();
+    // db.get('house.analytics')
+    //     .find({ id: month })
+    //     .update('totalTimeOn', t => t + timeOn)
+    //     .write();
     db.get('house')
         .update('totalPowerOn', t => t + (POWER_PER_HOUR * room.lightsCount * (timeOn/3600000)))
         .write();
@@ -116,7 +116,6 @@ const setMonthlyTimeOn = (room) => {
     const month = new Date().getMonth();
     const now = new Date().getTime();
     const timeOn = now - room.lastOn;
-    debugger
     db.get('rooms')
         .find({ id: room.id })
         .get('analytics')
@@ -130,7 +129,7 @@ const getAnalytics = ({ newData, oldData }) => {
     oldData.map((roomOld, index) => {
         const roomNew = newData[index];
         if (roomOld.on !== roomNew.on) {
-            if (roomOld.on && !roomNew.on && roomNew.id === roomOld.id) {
+            if (roomNew.id === roomOld.id) {
                 setMonthlyTimeOn(roomOld)
             }
             setRoomOnStatus(roomOld);

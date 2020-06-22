@@ -14,6 +14,7 @@ import Power from './components/Power';
 import Hours from './components/Hours';
 import Status from './components/Status';
 import Active from './components/Active';
+import Breakdown from './components/Breakdown';
 
 const { Header, Footer, Content } = Layout;
 
@@ -77,14 +78,13 @@ function App() {
                 <Hours />
               </Flex>
               <Flex borderRadius="20px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={GREY} boxShadow>
-                <TitleAndDescription fontSize={28} title="34%^" description="Change since last month" />
+                <TitleAndDescription fontSize={28} title="N/A" description="Change since last month" />
               </Flex>
             </Flex>
-            <Flex borderRadius="20px" title="Month" padding="20px" height="100%" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
-              USAGE %/MONTH
+            <Flex borderRadius="20px" title="Month" padding="20px" height="calc(100% - 160px)" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
+              <Breakdown />
+            </Flex>
           </Flex>
-          </Flex>
-
         </Flex>
       </Container>
     </Lumen.Provider>
