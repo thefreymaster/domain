@@ -108,10 +108,11 @@ const setRoomTimeToNone = (room) => {
 
 const setHouseTimeOn = (timeOn, room) => {
     const month = new Date().getMonth();
-    db.get('house.analytics')
-        .find({ id: month })
-        .update('totalTimeOn', t => t + timeOn)
-        .write();
+    const [house] = db.get('house.analytics')
+        .filter({ id: month })
+        .value();
+        //need to change to use filter like setMonthlyTimeOn
+    house.totalTimeOn = house.totalTimeOn + timeOn;
     db.get('house')
         .update('totalPowerOn', t => t + (POWER_PER_HOUR * room.lightsCount * (timeOn/3600000)))
         .write();
