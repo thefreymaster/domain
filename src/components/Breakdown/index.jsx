@@ -15,7 +15,7 @@ const Breakdown = () => {
         const roomData = {
             label: room.name,
             id: room.name,
-            value: (roomAnalytics.totalTimeOn / houseAnalytics.totalTimeOn).toFixed(2),
+            value: ((roomAnalytics.totalTimeOn / houseAnalytics.totalTimeOn) * 100).toFixed(2),
         }
         return roomData;
     })

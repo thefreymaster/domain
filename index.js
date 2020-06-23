@@ -108,13 +108,11 @@ const setRoomTimeToNone = (room) => {
 
 const setHouseTimeOn = (timeOn, room) => {
     const month = new Date().getMonth();
-    const [house] = db.get('house.analytics')
-        .filter({ id: month })
+    const house = db.get('house')
         .value();
-        //need to change to use filter like setMonthlyTimeOn
-    house.totalTimeOn = house.totalTimeOn + timeOn;
+    house.analytics[month].totalTimeOn = house.analytics[month].totalTimeOn + timeOn;
     db.get('house')
-        .update('totalPowerOn', t => t + (POWER_PER_HOUR * room.lightsCount * (timeOn/3600000)))
+        .update('totalPowerOn', t => t + (POWER_PER_HOUR * room.lightsCount * (timeOn / 3600000)))
         .write();
 }
 
@@ -125,7 +123,7 @@ const setMonthlyTimeOn = (room) => {
     const [stuff] = db.get('rooms')
         .filter({ id: room.id })
         .value()
-    stuff.analytics[month].totalTimeOn = timeOn;
+    stuff.analytics[month].totalTimeOn = stuff.analytics[month].totalTimeOn + timeOn;
     setHouseTimeOn(timeOn, room);
 }
 
@@ -168,14 +166,136 @@ const getGroups = () => {
                     db.defaults({
                         rooms: [],
                         house: {
-                            analytics: defaultMonths,
+                            analytics: [
+                                {
+                                    id: 0,
+                                    month: "Jan",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 1,
+                                    month: "Feb",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 2,
+                                    month: "March",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 3,
+                                    month: "April",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 4,
+                                    month: "May",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 5,
+                                    month: "June",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 6,
+                                    month: "July",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 7,
+                                    month: "August",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 8,
+                                    month: "September",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 9,
+                                    month: "October",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 10,
+                                    month: "November",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 11,
+                                    month: "December",
+                                    totalTimeOn: 0,
+                                }
+                            ],
                             totalPowerOn: 0
                         },
                     })
                         .write()
                     compactGroups.map((group) => {
                         db.get('rooms').push({
-                            analytics: defaultMonths,
+                            analytics: [
+                                {
+                                    id: 0,
+                                    month: "Jan",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 1,
+                                    month: "Feb",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 2,
+                                    month: "March",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 3,
+                                    month: "April",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 4,
+                                    month: "May",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 5,
+                                    month: "June",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 6,
+                                    month: "July",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 7,
+                                    month: "August",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 8,
+                                    month: "September",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 9,
+                                    month: "October",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 10,
+                                    month: "November",
+                                    totalTimeOn: 0,
+                                },
+                                {
+                                    id: 11,
+                                    month: "December",
+                                    totalTimeOn: 0,
+                                }
+                            ],
                             id: group.id,
                             name: group.name,
                             on: group.action.on,
