@@ -19,7 +19,7 @@ import Breakdown from './components/Breakdown';
 const { Header, Footer, Content } = Layout;
 
 export const GREEN = "#37b86e";
-export const GREY = "#4d4d4d";
+export const GREY = "#333333";
 
 const socket = io('http://192.168.124.22:6700');
 
@@ -53,7 +53,7 @@ function App() {
 
   return (
     <Lumen.Provider socket={socket}>
-      <Container backgroundColor="#353535">
+      <Container backgroundColor="#1d1d1d">
         <Flex width="20%">
           <Flex direction="column" alignItems="center" borderRadius="20px" width="100%" padding="20px" margin="30px 30px 30px 30px" backgroundColor={GREY} boxShadow>
             <Branding />

@@ -3,7 +3,7 @@ import { filter } from 'lodash';
 import * as Lumen from "../../Context";
 import TitleAndDescription from '../../common/TitleAndDescription';
 
-const Power = () => {
+const Active = () => {
     const context = React.useContext(Lumen.Context);
     if (context.rooms.length === 0) {
         return null
@@ -14,7 +14,7 @@ const Power = () => {
         room.analytics[month].totalTimeOn
     ))
     const mostActive = Math.max(...roomMonths.map(room => room.totalTimeOn));
-    return null
+    return null;
 }
 
-export default Power;
+export default Active;

@@ -1,0 +1,9 @@
+
+.breath-animation{
+    animation: breath 5s infinite;
+}
+@keyframes breath{
+    from {background-color: #ffd34d;}
+    50% {background-color: #f9e199;}
+    to {background-color: #ffd34d;} 
+}
