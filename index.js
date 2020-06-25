@@ -19,8 +19,7 @@ const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 const port = 6700;
-const POWER_PER_HOUR = 9.3;
-
+const POWER_PER_HOUR = 0.0003;
 
 const defaultMonths = [
     {
