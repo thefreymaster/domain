@@ -11,8 +11,13 @@ const TitleAndDescription = (props) => {
         name: {
             fontSize: props.fontSize,
             marginLeft: props.noMargin ? 0 : 10,
-            color: 'white',
+            color: props.titleColor || 'white',
             fontFamily: '"Fredoka One", cursive',
+        },
+        icon: {
+            display: 'flex',
+            alignItems: 'center',
+            marginLeft: 6,
         },
         description: {
             fontSize: 11,
@@ -23,7 +28,10 @@ const TitleAndDescription = (props) => {
     }
     return (
         <Flex direction="column">
-            <div style={inline.name}>{props.title}</div>
+            <Flex direction="row">
+                <div style={inline.name}>{props.title}</div>
+                <div style={inline.icon}>{props.icon}</div>
+            </Flex>
             <div style={inline.description}>{props.description}</div>
         </Flex>
     )

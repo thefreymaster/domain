@@ -9,12 +9,8 @@ const Active = () => {
         return null
     }
     const month = new Date().getMonth();
-    const power = parseFloat(context.rooms).toFixed(2) || 0;
-    const roomMonths = context.rooms.map(room => (
-        room.analytics[month].totalTimeOn
-    ))
-    const mostActive = Math.max(...roomMonths.map(room => room.totalTimeOn));
-    return null;
+    const mostActive = Math.max(...context.rooms.map(room => room.analytics[month].totalTimeOn));
+    return <TitleAndDescription fontSize={28} title={monthActive.month} description="Most Active Room" />; 
 }
 
 export default Active;

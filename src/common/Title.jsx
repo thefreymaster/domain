@@ -2,7 +2,7 @@ import React from 'react';
 
 const Title = (props) => {
     const inline = {
-        color: 'white',
+        color: props.color || 'white',
         fontSize: 18,
         fontFamily:` 'Fredoka One', cursive`,
         ...props.style

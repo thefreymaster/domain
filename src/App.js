@@ -13,8 +13,9 @@ import TitleAndDescription from './common/TitleAndDescription';
 import Power from './components/Power';
 import Hours from './components/Hours';
 import Status from './components/Status';
-import Active from './components/Active';
 import Breakdown from './components/Breakdown';
+import { isMobile } from 'react-device-detect';
+import PreviousMonth from './components/PreviousMonth';
 
 const { Header, Footer, Content } = Layout;
 
@@ -54,37 +55,38 @@ function App() {
   return (
     <Lumen.Provider socket={socket}>
       <Container backgroundColor="#1d1d1d">
-        <Flex width="20%">
-          <Flex direction="column" alignItems="center" borderRadius="20px" width="100%" padding="20px" margin="30px 30px 30px 30px" backgroundColor={GREY} boxShadow>
-            <Branding />
-            <Status />
+        {!isMobile &&
+          <Flex width="20%">
+            <Flex direction="column" alignItems="center" borderRadius="3px 30px 30px 30px" width="100%" margin="30px 30px 30px 30px" backgroundColor={GREY} boxShadow>
+              <Branding />
+              <Status />
+            </Flex>
           </Flex>
-        </Flex>
-        <Flex width="80%" margin="30px 30px 30px 0px">
-          <Flex height="100%" width="33%" margin="0px 30px 0px 0px" direction="column">
-            <Flex borderRadius="20px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={GREY} boxShadow>
+        }
+        <Flex width={isMobile ? "100%" : "80%"} margin={isMobile ? "30px 30px 30px 30px" : "30px 30px 30px 0px"}>
+          <Flex height="100%" width={isMobile ? "100%" : "33%"} margin={isMobile ? "0px 0px 0px 0px" : "0px 30px 0px 0px"} direction="column">
+            <Flex borderRadius="3px 30px 30px 30px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={GREY} boxShadow>
               <Hours />
             </Flex>
-            <Flex borderRadius="20px" justifyContent="center" title="Rooms" direction="column" padding="20px" height="calc(75% - 80px)" width="100%" margin="0px 30px 0px 0px" backgroundColor={GREY} boxShadow>
+            <Flex borderRadius="3px 30px 30px 30px" justifyContent="flex-start" title="Rooms" direction="column" padding="20px" height="calc(100% - 160px)" width="100%" margin="0px 30px 0px 0px" backgroundColor={GREY} boxShadow>
               <Rooms />
             </Flex>
-            <Flex borderRadius="20px" title="Most Active" padding="20px" height="calc(25% - 80px)" width="100%" backgroundColor={GREY} boxShadow>
-              <Active />
-            </Flex>
           </Flex>
-          <Flex height="100%" width="66%" direction="column">
-            <Flex direction="row">
-              <Flex borderRadius="20px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={GREY} boxShadow>
-                <Power />
+          {!isMobile &&
+            <Flex height="100%" width="66%" direction="column">
+              <Flex direction="row">
+                <Flex borderRadius="3px 30px 30px 30px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={GREY} boxShadow>
+                  <Power />
+                </Flex>
+                <Flex borderRadius="3px 30px 30px 30px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={GREY} boxShadow>
+                  <PreviousMonth />
+                </Flex>
               </Flex>
-              <Flex borderRadius="20px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={GREY} boxShadow>
-                <TitleAndDescription fontSize={28} title="N/A" description="Change since last month" />
+              <Flex borderRadius="3px 30px 30px 30px" title="Month" padding="20px" height="calc(100% - 160px)" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
+                <Breakdown />
               </Flex>
             </Flex>
-            <Flex borderRadius="20px" title="Month" padding="20px" height="calc(100% - 160px)" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
-              <Breakdown />
-            </Flex>
-          </Flex>
+          }
         </Flex>
       </Container>
     </Lumen.Provider>

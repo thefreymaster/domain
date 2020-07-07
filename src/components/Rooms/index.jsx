@@ -35,7 +35,7 @@ const Rooms = (props) => {
 
     return context.rooms.map(room => {
         return (
-            <Flex alignItems="center" direction="row" style={style.item}>
+            <Flex alignItems="flex-start" direction="row" style={style.item}>
                 <Switch loading={loading == room.id} checked={room.on} onChange={() => handleChange({ on: room.on, id: room.id, setLoading, room })} />
                 <TitleAndDescription fontSize={14} title={room.name} description={room.on ? "All lights on" : "No lights on"} />
             </Flex>

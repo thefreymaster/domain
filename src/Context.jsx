@@ -55,10 +55,13 @@ const reducer = (state, action) => {
     return newState;
 }
 
-const initialState = { rooms: [], house: { 
-    analytics: [],
-    totalPowerOn: 0,
-}, isLoading: false };
+const initialState = {
+    rooms: [],
+    house: {
+        analytics: [],
+        totalPowerOn: 0,
+    }, isLoading: false
+};
 
 export const Provider = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);

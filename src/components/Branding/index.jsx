@@ -6,10 +6,10 @@ import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
 
 const Branding = () => {
     return (
-        <Flex height="120px" width="100%" justifyContent="center" alignItems="center" direction="column" style={{borderBottom: 'dashed 2px #ffffff3b'}}>
-            <FontAwesomeIcon size="2x" style={{color: 'white'}} icon={faLightbulb} />
+        <Flex borderRadius="3px 30px 30px 30px" backgroundColor="white" height="120px" width="100%" justifyContent="center" alignItems="center" direction="column" style={{borderBottom: 'dashed 2px #ffffff3b'}}>
+            <FontAwesomeIcon size="2x" icon={faLightbulb} />
             <div style={{ marginTop: 10 }} />
-            <Title>Lumen</Title>
+            <Title color="#333333">Lumen</Title>
         </Flex>
     )
 }
