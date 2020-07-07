@@ -34,10 +34,13 @@ const Rooms = (props) => {
     }
 
     return context.rooms.map(room => {
+        const lastOn = new Date(room.lastOn).toLocaleDateString('en-US', {
+           month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric'
+        });
         return (
             <Flex alignItems="flex-start" direction="row" style={style.item}>
                 <Switch loading={loading == room.id} checked={room.on} onChange={() => handleChange({ on: room.on, id: room.id, setLoading, room })} />
-                <TitleAndDescription fontSize={14} title={room.name} description={room.on ? "All lights on" : "No lights on"} />
+                <TitleAndDescription fontSize={14} title={room.name} description={room.on ? "All lights on" : `Last on: ${lastOn}`} />
             </Flex>
         )
     })
