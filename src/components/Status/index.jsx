@@ -8,7 +8,7 @@ import './status.css';
 
 const Status = () => {
     const context = React.useContext(Lumen.Context);
-    return context.rooms.map(room => {
+    return context.rooms.map((room, index) => {
         const inline = {
             bubble: {
                 height: 30,
@@ -36,7 +36,7 @@ const Status = () => {
         else {
             onForString = 'Off'
         }
-        return <Flex direction="column" style={{ borderBottom: "2px dashed rgba(255, 255, 255, 0.23)" }} justifyContent="center" alignItems="center" height="100px" width="100%">
+        return <Flex padding="20px" direction="column" style={{ borderBottom: index !== context.rooms.length-1 && "2px dashed rgba(255, 255, 255, 0.23)" }} justifyContent="center" alignItems="center" height="100px" width="100%">
             <div className={classNames({ 'breath-animation': room.on })} style={inline.bubble}></div>
             <TitleAndDescription noMargin fontSize={12} title={room.name} />
             <div style={inline.onFor}>{onForString}</div>
