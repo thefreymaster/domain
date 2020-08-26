@@ -1,7 +1,7 @@
 {
-  "name": "rainmaker",
+  "name": "lumen",
   "version": "1.0.0",
-  "description": "Sprinkler system controller",
+  "description": "system for tracking usage on Phillips Hue lighting system",
   "main": "index.js",
   "author": "",
   "license": "ISC",
