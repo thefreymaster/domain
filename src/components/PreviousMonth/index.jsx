@@ -3,7 +3,7 @@ import { filter } from 'lodash';
 import * as Lumen from "../../Context";
 import TitleAndDescription from '../../common/TitleAndDescription';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCarrot, faCaretUp, faCaretDown } from '../../../../../../node_modules/@fortawesome/free-solid-svg-icons';
+import { faCarrot, faCaretUp, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 const PreviousMonth = () => {
     const context = React.useContext(Lumen.Context);

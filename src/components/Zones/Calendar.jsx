@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 import { getCalendarEntries, getCalendarEntriesCount } from '../../api/rest';
 import io from 'socket.io-client';
-import { faFaucet, faCalendarDay } from '../../../../../../node_modules/@fortawesome/free-solid-svg-icons';
+import { faFaucet, faCalendarDay } from '@fortawesome/free-solid-svg-icons';
 import { GREEN } from '../../App';
 
 const socket = io(process.env.NODE_ENV === 'development' ? 'http://localhost:6700' : 'http://192.168.124.69:6700/'); console.log(process.env.NODE_ENV)
