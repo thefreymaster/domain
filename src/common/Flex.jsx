@@ -1,7 +1,10 @@
 import React from 'react';
 import Title from './Title';
+import { Context } from '../Context';
 
 const Flex = (props) => {
+    const { isDay } = React.useContext(Context);
+
     const inline = {
         display: 'flex',
         flexDirection: props.direction,
@@ -14,7 +17,7 @@ const Flex = (props) => {
         margin: props.margin,
         borderRadius: props.borderRadius,
         flexWrap: props.flexWrap,
-        boxShadow: props.boxShadow && `0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)`,
+        boxShadow: props.boxShadow && determineBoxShadow(isDay),
         padding: props.padding,
         ...props.style,
     }
@@ -27,5 +30,14 @@ const Flex = (props) => {
         </React.Fragment>
     )
 }
+
+const determineBoxShadow = (isDay) => {
+    if (isDay) {
+        return `0 2px 1px -1px #ffffff80, 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)`;
+    }
+    return `0 2px 1px -1px #00000080, 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12)`;
+}
+
+
 
 export default Flex;

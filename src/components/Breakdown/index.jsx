@@ -3,6 +3,7 @@ import { filter } from 'lodash';
 import * as Lumen from "../../Context";
 import { ResponsivePie } from '@nivo/pie'
 import { getHours } from '../../utils';
+import { isMobile } from 'react-device-detect';
 
 const Breakdown = () => {
     const context = React.useContext(Lumen.Context);
@@ -19,11 +20,19 @@ const Breakdown = () => {
         }
         return roomData;
     })
+    const theme = {
+        textColor: '#eee',
+        fontSize: '14px',
+        tickColor: '#eee',
+        fontWeight: 900
+    }
 
     return (
         <ResponsivePie
+            enableRadialLabels={!isMobile}
+            sliceLabel={(d) => `${parseInt(d.value).toFixed(0)}%`}
             data={data}
-            margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+            margin={!isMobile && { top: 40, right: 80, bottom: 80, left: 80 }}
             innerRadius={0.5}
             padAngle={0.7}
             cornerRadius={3}
@@ -32,7 +41,7 @@ const Breakdown = () => {
             borderColor={{ from: 'color', modifiers: [['darker', 0.2]] }}
             radialLabelsSkipAngle={10}
             radialLabelsTextXOffset={6}
-            radialLabelsTextColor="#fff"
+            radialLabelsTextColor={context.isDay ? 'black' : 'white'}
             radialLabelsLinkOffset={0}
             radialLabelsLinkDiagonalLength={16}
             radialLabelsLinkHorizontalLength={24}
@@ -44,6 +53,7 @@ const Breakdown = () => {
             motionStiffness={90}
             motionDamping={15}
             sortByValue
+            theme={theme}
         />
     )
 }

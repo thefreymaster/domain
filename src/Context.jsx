@@ -1,43 +1,12 @@
 import React from 'react';
+import io from 'socket.io-client';
 import { isEqual } from 'lodash';
 import { getRooms, getAnalytics } from './api/rest';
+import { NIGHT_BACKGROUND_COLOR } from './constants';
 
-const defaultState = {
-    zones: [{
-        "name": "Front Yard Center",
-        "zone": "1",
-        "active": false,
-        "uptime": 0
-    },
-    {
-        "name": "Front Yard Right",
-        "zone": "2",
-        "active": false,
-        "uptime": 0
-    },
-    {
-        "name": "Backyard",
-        "zone": "4",
-        "active": false,
-        "uptime": 0
-    },
-    {
-        "name": "Front Yard Flower Beds",
-        "zone": "5",
-        "active": false,
-        "uptime": 0
-    }],
-    usage: {
-        amount: 0,
-        time: 0,
-        change: 0,
-    },
-    house: {
-        totalTimeOn: 0,
-    }
-}
+const socket = io(process.env.REACT_APP_LUMEN_HOST);
 
-export const Context = React.createContext(defaultState);
+export const Context = React.createContext();
 
 const reducer = (state, action) => {
     const newState = { ...state };
@@ -48,6 +17,12 @@ const reducer = (state, action) => {
             break;
         case 'SET_ANALYTICS':
             newState.analytics = action.payload;
+            break;
+        case 'SET_IS_DAY':
+            newState.isDay = true;
+            break;
+        case 'SET_IS_NIGHT':
+            newState.isDay = false;
             break;
         default:
             throw new Error();
@@ -60,19 +35,33 @@ const initialState = {
     house: {
         analytics: [],
         totalPowerOn: 0,
-    }, isLoading: false
+    }, 
+    isLoading: false,
+    isDay: false,
+    colors: {
+        day: {
+            color: 'black',
+            backgroundColor: 'white'
+        },
+        night: {
+            color: 'white',
+            backgroundColor: NIGHT_BACKGROUND_COLOR
+        }
+    }
 };
 
 export const Provider = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     React.useLayoutEffect(() => {
+        const hour = new Date().getHours();
+        if (hour >= 6 && hour <= 17) {
+            dispatch({ type: 'SET_IS_DAY' })
+        }
         const rooms = getRooms();
         rooms.then((res) => {
             dispatch({ type: 'SET_ROOMS', payload: res.data })
-            console.log(state)
-
         })
-        props.socket.on('groups_update', (data) => {
+        socket.on('groups_update', (data) => {
             dispatch({ type: 'SET_ROOMS', payload: data })
         })
     }, [])

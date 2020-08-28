@@ -1,14 +1,14 @@
 import React from 'react';
 import classNames from 'classnames';
-import * as Lumen from "../../Context";
 import TitleAndDescription from '../../common/TitleAndDescription';
 import { POWER_PER_HOUR, getHours } from '../../utils';
 import Flex from '../../common/Flex';
 import './status.css';
+import { Context } from '../../Context';
 
 const Status = () => {
-    const context = React.useContext(Lumen.Context);
-    return context.rooms.map((room, index) => {
+    const { isDay, rooms } = React.useContext(Context);
+    return rooms.map((room, index) => {
         const inline = {
             bubble: {
                 height: 30,
@@ -36,13 +36,22 @@ const Status = () => {
         else {
             onForString = 'Off'
         }
-        return <Flex padding="20px" direction="column" style={{ borderBottom: index !== context.rooms.length-1 && "2px dashed rgba(255, 255, 255, 0.23)" }} justifyContent="center" alignItems="center" height="100px" width="100%">
-            <div className={classNames({ 'breath-animation': room.on })} style={inline.bubble}></div>
-            <TitleAndDescription noMargin fontSize={12} title={room.name} />
-            <div style={inline.onFor}>{onForString}</div>
-        </Flex>
+        return (
+            <Flex padding="20px" direction="column" style={{ borderBottom: index !== rooms.length - 1 && determineBorder(isDay) }} justifyContent="center" alignItems="center" height="100px" width="100%">
+                <div className={classNames({ 'breath-animation': room.on })} style={inline.bubble}></div>
+                <TitleAndDescription noMargin fontSize={12} title={room.name} />
+                <div style={inline.onFor}>{onForString}</div>
+            </Flex>
+        )
     }
     )
+}
+
+const determineBorder = (isDay) => {
+    if (isDay) {
+        return "2px dashed rgba(255, 255, 255, 0.23)";
+    }
+    return "2px dashed rgba(255, 255, 255, 0.23)";
 }
 
 export default Status;

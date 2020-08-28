@@ -6,6 +6,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
+    "@fortawesome/react-fontawesome": "^0.1.11",
     "@nivo/calendar": "^0.61.1",
     "@nivo/heatmap": "^0.61.0",
     "@nivo/line": "^0.61.1",

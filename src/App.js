@@ -1,13 +1,8 @@
 import React from 'react';
 import './App.css';
-import { Layout } from 'antd';
-import io from 'socket.io-client';
-
-
 import Container from './common/Container';
 import Flex from './common/Flex';
 import Branding from './components/Branding';
-import * as Lumen from "./Context";
 import Rooms from './components/Rooms';
 import Power from './components/Power';
 import Hours from './components/Hours';
@@ -15,13 +10,10 @@ import Status from './components/Status';
 import Breakdown from './components/Breakdown';
 import { isMobile } from 'react-device-detect';
 import PreviousMonth from './components/PreviousMonth';
+import { Context } from './Context';
+import { GREY, WHITE, NIGHT_BACKGROUND_COLOR, NIGHT_BACKGROUND_COLOR_CONTAINER, DAY_BACKGROUND_COLOR_CONTAINER } from './constants';
+import ThemeToggle from './components/Theme';
 
-const { Header, Footer, Content } = Layout;
-
-export const GREEN = "#37b86e";
-export const GREY = "#333333";
-
-const socket = io('http://192.168.124.121:6700');
 
 function App() {
   const [height, setHeight] = React.useState(window.innerHeight);
@@ -51,44 +43,47 @@ function App() {
     setHeight(window.innerHeight - 129)
   })
 
+  const { isDay } = React.useContext(Context);
+
   return (
-    <Lumen.Provider socket={socket}>
-      <Container backgroundColor="#1d1d1d">
+    <Container backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER}>
+      {!isMobile &&
+        <Flex width="20%">
+          <Flex direction="column" alignItems="center" borderRadius="3px 30px 30px 30px" width="100%" margin="30px 30px 30px 30px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+            <Branding />
+            <Status />
+          </Flex>
+        </Flex>
+      }
+      <Flex width={isMobile ? "100%" : "80%"} margin={isMobile ? "30px 30px 30px 30px" : "30px 30px 30px 0px"}>
+        <Flex height="100%" width={isMobile ? "100%" : "33%"} margin={isMobile ? "0px 0px 0px 0px" : "0px 30px 0px 0px"} direction="column">
+          <Flex borderRadius="3px 30px 30px 30px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+            <Hours />
+          </Flex>
+          <Flex borderRadius="3px 30px 30px 30px" justifyContent="flex-start" title={isMobile ? "Breakdown" : "Rooms"} direction="column" padding="20px" height="calc(100% - 160px)" width="calc(100%)" margin={`0px ${isMobile ? 0 : 30} 0px 0px`} backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+            {isMobile ? <Breakdown /> : <Rooms />}
+          </Flex>
+        </Flex>
         {!isMobile &&
-          <Flex width="20%">
-            <Flex direction="column" alignItems="center" borderRadius="3px 30px 30px 30px" width="100%" margin="30px 30px 30px 30px" backgroundColor={GREY} boxShadow>
-              <Branding />
-              <Status />
+          <Flex height="100%" width="66%" direction="column">
+            <Flex direction="row">
+              <Flex borderRadius="3px 30px 30px 30px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+                <Power />
+              </Flex>
+              <Flex borderRadius="3px 30px 30px 30px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+                <PreviousMonth />
+              </Flex>
+            </Flex>
+            <Flex borderRadius="3px 30px 30px 30px" title="Month" padding="20px" height="calc(100% - 160px)" width="100%" margin="0px 0px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+              <Breakdown />
             </Flex>
           </Flex>
         }
-        <Flex width={isMobile ? "100%" : "80%"} margin={isMobile ? "30px 30px 30px 30px" : "30px 30px 30px 0px"}>
-          <Flex height="100%" width={isMobile ? "100%" : "33%"} margin={isMobile ? "0px 0px 0px 0px" : "0px 30px 0px 0px"} direction="column">
-            <Flex borderRadius="3px 30px 30px 30px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={GREY} boxShadow>
-              <Hours />
-            </Flex>
-            <Flex borderRadius="3px 30px 30px 30px" justifyContent="flex-start" title="Rooms" direction="column" padding="20px" height="calc(100% - 160px)" width="100%" margin="0px 30px 0px 0px" backgroundColor={GREY} boxShadow>
-              <Rooms />
-            </Flex>
-          </Flex>
-          {!isMobile &&
-            <Flex height="100%" width="66%" direction="column">
-              <Flex direction="row">
-                <Flex borderRadius="3px 30px 30px 30px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={GREY} boxShadow>
-                  <Power />
-                </Flex>
-                <Flex borderRadius="3px 30px 30px 30px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={GREY} boxShadow>
-                  <PreviousMonth />
-                </Flex>
-              </Flex>
-              <Flex borderRadius="3px 30px 30px 30px" title="Month" padding="20px" height="calc(100% - 160px)" width="100%" margin="0px 0px 0px 0px" backgroundColor={GREY} boxShadow>
-                <Breakdown />
-              </Flex>
-            </Flex>
-          }
-        </Flex>
-      </Container>
-    </Lumen.Provider>
+      </Flex>
+      <Flex>
+        <ThemeToggle />
+      </Flex>
+    </Container>
   );
 }
 
