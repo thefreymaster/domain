@@ -31,7 +31,7 @@ const Status = () => {
         if (room.on) {
             const now = new Date().getTime();
             onFor = ((now - room.lastOn) / 60000).toFixed(2);
-            onForString = `On For ${onFor}Min`
+            onForString = `${onFor > 60 ? `${(onFor/60).toFixed(2)} Hours` : `${onFor} Minutes` }`
         }
         else {
             onForString = 'Off'

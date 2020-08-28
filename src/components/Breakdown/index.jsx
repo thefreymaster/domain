@@ -48,7 +48,7 @@ const Breakdown = () => {
             radialLabelsLinkStrokeWidth={1}
             radialLabelsLinkColor={{ from: 'color' }}
             slicesLabelsSkipAngle={10}
-            slicesLabelsTextColor="#fff"
+            slicesLabelsTextColor={context.isDay ? 'black' : 'white'}
             animate={true}
             motionStiffness={90}
             motionDamping={15}

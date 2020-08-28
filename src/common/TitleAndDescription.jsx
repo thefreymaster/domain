@@ -9,7 +9,7 @@ const TitleAndDescription = (props) => {
         name: {
             fontSize: props.fontSize,
             marginLeft: props.noMargin ? 0 : 10,
-            color: isDay ? DAY_COLOR : 'white',
+            color: props.titleColor ? props.titleColor : isDay ? DAY_COLOR : 'white',
             fontFamily: '"Fredoka One", cursive',
         },
         icon: {
