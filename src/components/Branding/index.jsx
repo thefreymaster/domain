@@ -10,7 +10,7 @@ const Branding = () => {
     const { isDay } = React.useContext(Context);
     return (
         <Flex
-            borderRadius="3px 30px 30px 30px"
+            borderRadius="3px 10px 10px"
             backgroundColor={isDay ? NIGHT_BACKGROUND_COLOR : WHITE}
             height="120px"
             width="100%"

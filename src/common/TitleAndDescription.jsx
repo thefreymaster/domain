@@ -20,7 +20,7 @@ const TitleAndDescription = (props) => {
         description: {
             fontSize: 11,
             marginLeft: props.noMargin ? 0 : 10,
-            color: isDay ? DAY_COLOR_SECONDARY : 'white',
+            color: props.secondaryColor ? props.secondaryColor : isDay ? DAY_COLOR_SECONDARY : 'white',
             fontFamily: '"Fredoka One", cursive',
         }
     }
