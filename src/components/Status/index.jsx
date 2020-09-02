@@ -52,12 +52,12 @@ const Status = () => {
                 }}
                 padding="10px"
                 direction="column"
-                style={{ border: determineBorder(isDay) }}
+                // style={{ border: determineBorder(isDay) }}
                 justifyContent="center"
                 alignItems="center"
-                height="80px"
-                width="100%"
-                margin="10px 0px"
+                height="140px"
+                width="calc(50% - 20px)"
+                margin="10px 10px"
                 borderRadius="10px"
                 className={classNames("cursor-hover status", { 
                     "status-day": isDay, 

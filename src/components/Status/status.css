@@ -23,6 +23,8 @@
 
 .status-day{
     box-shadow: rgba(141, 141, 141, 0.5) 0px 1px 2px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    background-color: #eaeaea;
+
 }
 
 .status-day:hover{
@@ -34,6 +36,7 @@
     box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 2px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
     transition: box-shadow 100ms ease-in-out;
     transition: 0ms 100ms ease-in-out;
+    background-color: #292929;
 }
 
 .status-night:active{

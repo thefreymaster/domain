@@ -20,12 +20,19 @@ const Flex = (props) => {
         flexWrap: props.flexWrap,
         boxShadow: props.boxShadow && determineBoxShadow(isDay),
         padding: props.padding,
+        flexWrap: props.wrap && 'wrap',
         ...props.style,
     }
     return (
         <React.Fragment>
             <Title style={{ minHeight: props.title && 30 }}>{props.title}</Title>
-            <div onMouseDown={props.onMouseDown} className={props.className} style={inline} onClick={props.onClick} onMouseOver={props.onMouseOver} onMouseLeave={props.onMouseLeave}>
+            <div 
+                onMouseDown={props.onMouseDown} 
+                className={props.className} 
+                style={inline} 
+                onClick={props.onClick} 
+                onMouseOver={props.onMouseOver} 
+                onMouseLeave={props.onMouseLeave}>
                 {props.children}
             </div>
         </React.Fragment>

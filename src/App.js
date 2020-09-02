@@ -52,7 +52,7 @@ function App() {
           <Flex direction="column" alignItems="flex-start" borderRadius="3px 10px 10px" width="100%" margin="30px 30px 30px 30px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
             <Branding />
             <Flex direction="column" width="100%" padding="0px 10px">
-              <Status />
+              {/* <Status /> */}
             </Flex>
           </Flex>
         </Flex>
@@ -62,8 +62,8 @@ function App() {
           <Flex borderRadius="3px 10px 10px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
             <Hours />
           </Flex>
-          <Flex borderRadius="3px 10px 10px" justifyContent="flex-start" title={isMobile ? "Breakdown" : "Rooms"} direction="column" padding="20px" height="calc(100% - 160px)" width="calc(100%)" margin={`0px ${isMobile ? 0 : 30} 0px 0px`} backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
-            {isMobile ? <Breakdown /> : null}
+          <Flex wrap borderRadius="3px 10px 10px" justifyContent="flex-start" title={isMobile ? "Breakdown" : "Controls"} direction="row" padding="20px" height="calc(100% - 160px)" width="calc(100%)" margin={`0px ${isMobile ? 0 : 30} 0px 0px`} backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+            {isMobile ? <Breakdown /> : <Status />}
           </Flex>
         </Flex>
         {!isMobile &&
