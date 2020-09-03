@@ -19,9 +19,9 @@ const Branding = () => {
             direction="column"
         >
             <FontAwesomeIcon color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}
-                size="2x" icon={faShapes} />
+                size="2x" icon={faLightbulb} />
             <div style={{ marginTop: 10 }} />
-            <Title color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}>Knot</Title>
+            <Title color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}>Hue Analytics</Title>
         </Flex>
     )
 }

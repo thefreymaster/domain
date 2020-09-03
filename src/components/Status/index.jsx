@@ -55,7 +55,7 @@ const Status = () => {
                 // style={{ border: determineBorder(isDay) }}
                 justifyContent="center"
                 alignItems="center"
-                height="140px"
+                height="calc(33% - 20px)"
                 width="calc(50% - 20px)"
                 margin="10px 10px"
                 borderRadius="10px"
