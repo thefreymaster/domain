@@ -367,6 +367,25 @@ app.get(`/api/analytics`, (req, res) => {
     res.send(db.getState());
 })
 
+const getHomebridgeAccessories = () => {
+
+}
+
+app.get(`/api/homebridge/accessories`, (req, res) => {
+    const body = JSON.stringify({
+        username: 'admin',
+        password: 'admin',
+    });
+    axios.post(`http://192.168.124.10:8080/api/auth/login`, body)
+        .then(function (response) {
+            console.log(response)
+            res.send({ success: true, response });
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+})
+
 app.get('/*', function (request, response) {
     response.sendFile(path.resolve(__dirname, 'build/index.html'));
 });
@@ -375,3 +394,4 @@ server.listen(port, () => {
     getGroups();
     console.log(`Lights running on 192.168.124.10:${port}`)
 });
+
