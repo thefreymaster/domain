@@ -139,7 +139,7 @@ const getAnalytics = ({ newData, oldData }) => {
             }
         }
     })
-    console.log({ newData, oldData })
+    // console.log({ newData, oldData })
 }
 
 const getGroups = () => {
@@ -160,7 +160,7 @@ const getGroups = () => {
                         on: group.action.on,
                     }
                 })
-                console.log(compactGroups)
+                // console.log(compactGroups)
                 if (!db.has('rooms').value()) {
                     db.defaults({
                         rooms: [],
@@ -323,7 +323,7 @@ app.get(`/api/rooms`, (req, res) => {
                     return group;
                 }
             })
-            console.log(_.compact(groups))
+            // console.log(_.compact(groups))
             io.emit('groups_update', db.getState());
             res.send(db.getState());
         })
