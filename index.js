@@ -371,17 +371,28 @@ const getHomebridgeAccessories = () => {
 
 }
 
+const data = JSON.stringify({
+    username: 'admin',
+    password: 'admin',
+});
+
+const config = {
+    method: 'post',
+    url: 'http://192.168.124.10:8080/api/auth/login',
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    data: data
+};
+
 app.get(`/api/homebridge/accessories`, (req, res) => {
-    const body = JSON.stringify({
-        username: 'admin',
-        password: 'admin',
-    });
-    axios.post(`http://192.168.124.10:8080/api/auth/login`, body)
+    axios(config)
         .then(function (response) {
             console.log(response)
             res.send({ success: true, response });
         })
         .catch(function (error) {
+            res.send({ success: false, error });
             console.log(error);
         })
 })
