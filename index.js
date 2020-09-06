@@ -1,5 +1,4 @@
 const express = require('express');
-const qs = require('qs');
 require('dotenv').config();
 const app = express();
 const low = require('lowdb');
@@ -372,7 +371,7 @@ const getHomebridgeAccessories = () => {
 
 }
 
-const data = qs.stringify({
+const data = JSON.stringify({
     username: 'admin',
     password: 'admin',
 });
