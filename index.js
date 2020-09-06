@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 const app = express();
 const low = require('lowdb');
@@ -14,6 +15,7 @@ const db = low(adapter);
 app.use(express.json());
 app.use(express.static(__dirname + '/build'));
 app.use(express.static(__dirname + '/images'));
+app.use(cors());
 
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
