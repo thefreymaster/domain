@@ -386,16 +386,14 @@ const config = {
 };
 
 app.get(`/api/homebridge/accessories`, (req, res) => {
-    debugger
     axios(config)
         .then(function (response) {
             console.log(response)
             res.send({ success: true, response });
         })
         .catch(function (error) {
-            debugger
-            res.send({ success: false, error });
             console.log(error);
+            res.send({ success: false, error });
         })
 })
 
