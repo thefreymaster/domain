@@ -394,7 +394,8 @@ const accessories = (token) => ({
 app.get(`/api/homebridge/accessories`, (req, res) => {
     axios(config)
         .then(function (response) {
-            axios(accessories(response.data.access_token))
+            const responseJson = JSON.parse(response);
+            axios(accessories(responseJson.data.access_token))
                 .then(function (accessoriesResponse) {
                     res.send({ success: true, accessories: JSON.stringify(accessoriesResponse) });
                 })
