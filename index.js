@@ -383,17 +383,12 @@ const config = {
     data: data
 };
 
-const getHomebridgeAccessories = async () => {
-    return await axios(config)
+app.get(`/api/homebridge/accessories`, (req, res) => {
+    axios(config)
         .then(function (response) {
             console.log(response)
-            res.send({ success: true, response });
+            res.send({ success: true, accessories: response });
         })
-}
-
-app.get(`/api/homebridge/accessories`, (req, res) => {
-    const accessories = getHomebridgeAccessories();
-    res.send({ success: true, accessories: accessories });
 })
 
 app.get('/*', function (request, response) {
