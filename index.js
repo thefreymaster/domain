@@ -383,11 +383,26 @@ const config = {
     data: data
 };
 
+const accessories = (token) => ({
+    method: 'get',
+    url: 'http://192.168.124.10:8080/api/auth/login',
+    headers: {
+        'Authorization': `Bearer ${token}`
+    },
+    data: data
+})
+
 app.get(`/api/homebridge/accessories`, (req, res) => {
     axios(config)
         .then(function (response) {
-            console.log(response)
-            res.send({ success: true, accessories: response });
+            axios(accessories(response.data.access_token))
+                .then(function (accessoriesResponse) {
+                    getGroups();
+                    res.send({ success: true, accessories: accessoriesResponse });
+                })
+        })
+        .catch(function (error) {
+            res.send({ success: false, error: error });
         })
 })
 
