@@ -396,7 +396,7 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
         .then(function (response) {
             axios(accessories(response.data.access_token))
                 .then(function (accessoriesResponse) {
-                    res.send(accessoriesResponse);
+                    res.send(accessoriesResponse.data);
                 })
                 .catch(function (error) {
                     console.log(error);
