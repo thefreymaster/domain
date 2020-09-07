@@ -393,9 +393,6 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
             console.log(response)
             res.send({ success: true, response });
         })
-        .catch(function (error) {
-            console.log(error);
-        })
 })
 
 app.get('/*', function (request, response) {
