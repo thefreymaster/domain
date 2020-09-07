@@ -385,11 +385,10 @@ const config = {
 
 const accessories = (token) => ({
     method: 'get',
-    url: 'http://192.168.124.10:8080/api/auth/login',
+    url: 'http://192.168.124.10:8080/api/accessories',
     headers: {
         'Authorization': `Bearer ${token}`
     },
-    data: data
 })
 
 app.get(`/api/homebridge/accessories`, (req, res) => {
