@@ -388,10 +388,10 @@ const config = {
 };
 
 app.get(`/api/homebridge/accessories`, (req, res) => {
-    axios.post('http://192.168.124.10:8080/api/auth/login', JSON.stringify({
+    axios.post('http://192.168.124.10:8080/api/auth/login', {
         username: 'admin',
         password: 'admin',
-    }))
+    })
         .then(function (response) {
             console.log(response)
             res.send({ success: true, response });
