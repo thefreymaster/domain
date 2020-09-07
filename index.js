@@ -393,7 +393,7 @@ const getHomebridgeAccessories = async () => {
 
 app.get(`/api/homebridge/accessories`, (req, res) => {
     const accessories = getHomebridgeAccessories();
-    res.send({ success: true, accessories });
+    res.send({ success: true, accessories: accessories });
 })
 
 app.get('/*', function (request, response) {
