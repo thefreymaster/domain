@@ -401,6 +401,7 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
                 })
         })
         .catch(function (error) {
+            console.log(error);
             res.send({ success: false, error: error });
         })
 })
