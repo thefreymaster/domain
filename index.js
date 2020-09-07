@@ -384,7 +384,7 @@ const config = {
 };
 
 const getHomebridgeAccessories = async () => {
-    return axios(config)
+    return await axios(config)
         .then(function (response) {
             console.log(response)
             res.send({ success: true, response });
@@ -392,7 +392,7 @@ const getHomebridgeAccessories = async () => {
 }
 
 app.get(`/api/homebridge/accessories`, (req, res) => {
-    const accessories = await getHomebridgeAccessories();
+    const accessories = getHomebridgeAccessories();
     res.send({ success: true, accessories });
 })
 
