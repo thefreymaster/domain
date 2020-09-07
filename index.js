@@ -369,10 +369,6 @@ app.get(`/api/analytics`, (req, res) => {
     res.send(db.getState());
 })
 
-const getHomebridgeAccessories = () => {
-
-}
-
 const data = {
     username: 'admin',
     password: 'admin',
@@ -387,12 +383,17 @@ const config = {
     data: data
 };
 
-app.get(`/api/homebridge/accessories`, (req, res) => {
-    axios(config)
+const getHomebridgeAccessories = async () => {
+    return axios(config)
         .then(function (response) {
             console.log(response)
             res.send({ success: true, response });
         })
+}
+
+app.get(`/api/homebridge/accessories`, (req, res) => {
+    const accessories = await getHomebridgeAccessories();
+    res.send({ success: true, accessories });
 })
 
 app.get('/*', function (request, response) {
