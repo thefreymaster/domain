@@ -6,7 +6,7 @@ export const Homebridge = () => {
     const { dispatch } = useLumenContext();
     React.useLayoutEffect(async() => {
         const accessories = await getHomebridgeAccessories();
-        debugger
+        console.log(accessories)
         dispatch({ type: "SET_HOMEBRIDGE_ACCESSORIES", payload: { accessories } })
     }, []);
     return <div>

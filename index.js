@@ -393,14 +393,24 @@ const accessories = (token) => ({
 
 const legalTypes = ['TemperatureSensor', 'ProtocolInformation', 'Thermostat'];
 
+const filterTypes = (accessoriesToFilter, type) => _.filter(accessoriesToFilter, (item) => {
+    return item.type.includes(type)
+})
+
 app.get(`/api/homebridge/accessories`, (req, res) => {
     axios(config)
         .then(function (response) {
             axios(accessories(response.data.access_token))
-                .then((accessoriesResponse) => {
-                    res.send(_.filter(accessoriesResponse.data, (item) => {
-                        return legalTypes.includes(item.type)
-                    }));
+                .then(({ data }) => {
+                    const homebridge = filterTypes(data, "ProtocolInformation");
+                    const nest = filterTypes(data, "Thermostat");
+                    const temperatures = filterTypes(data, "TemperatureSensor");
+
+                    res.send({
+                        homebridge,
+                        nest,
+                        temperatures,
+                    });
                 })
                 .catch(function (error) {
                     console.log(error);
