@@ -391,7 +391,28 @@ const accessories = (token) => ({
     },
 })
 
+const legalTypes = ['TemperatureSensor', 'ProtocolInformation', 'Thermostat'];
+
 app.get(`/api/homebridge/accessories`, (req, res) => {
+    axios(config)
+        .then(function (response) {
+            axios(accessories(response.data.access_token))
+                .then(function (accessoriesResponse) {
+                    _.filter(accessoriesResponse, legalTypes)
+                    res.send(accessoriesResponse.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    res.send({ success: false, error: error });
+                })
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.send({ success: false, error: error });
+        })
+})
+
+app.get(`/api/homebridge/accessories/all`, (req, res) => {
     axios(config)
         .then(function (response) {
             axios(accessories(response.data.access_token))
