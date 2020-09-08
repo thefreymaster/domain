@@ -402,17 +402,19 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
         .then(function (response) {
             axios(accessories(response.data.access_token))
                 .then(({ data }) => {
-                    const homebridge = filterTypes(data, "type", "ProtocolInformation");
+                    const system = filterTypes(data, "type", "ProtocolInformation");
                     const thermostat = filterTypes(data, "type", "Thermostat");
                     const eco = filterTypes(data, "serviceName", "Eco Mode");
+                    const fan = filterTypes(data, "type", "Fan");
                     const temperatures = filterTypes(data, "type", "TemperatureSensor");
                     const computers = filterTypes(data, "serviceName", "Desktop Gaming PC");
 
                     res.send({
-                        homebridge,
+                        system,
                         nest: {
                             thermostat,
                             eco,
+                            fan,
                         },
                         temperatures,
                         computers,

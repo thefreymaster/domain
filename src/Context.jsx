@@ -14,7 +14,7 @@ const reducer = (state, action) => {
     const newState = { ...state };
     switch (action.type) {
         case 'SET_HOMEBRIDGE_ACCESSORIES':
-            newState.accessories = action.payload.accessories;
+            newState.homebridge = action.payload.accessories;
             break;
         case 'SET_ROOMS':
             newState.rooms = action.payload.rooms;
@@ -53,7 +53,7 @@ const initialState = {
             backgroundColor: NIGHT_BACKGROUND_COLOR
         }
     },
-    accessories: [],
+    homebridge: {},
 };
 
 export const Provider = (props) => {
