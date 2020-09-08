@@ -21,6 +21,7 @@ const Flex = (props) => {
         boxShadow: props.boxShadow && determineBoxShadow(isDay),
         padding: props.padding,
         flexWrap: props.wrap && 'wrap',
+        textAlign: props.textAlign,
         ...props.style,
     }
     return (

@@ -3,6 +3,7 @@ import { getHomebridgeAccessories } from '../../api/rest';
 import { useLumenContext } from '../../Context';
 import Flex from '../../common/Flex';
 import Nest from './Nest';
+import Temperatures from './Temperatures';
 
 export const Homebridge = () => {
     const { dispatch, homebridge } = useLumenContext();
@@ -20,6 +21,7 @@ export const Homebridge = () => {
     return (
         <Flex direction="column">
             <Nest />
+            <Temperatures />
         </Flex>
     )
 }

@@ -40,7 +40,7 @@ const initialState = {
     house: {
         analytics: [],
         totalPowerOn: 0,
-    }, 
+    },
     isLoading: false,
     isDay: false,
     colors: {
@@ -71,8 +71,7 @@ export const Provider = (props) => {
             dispatch({ type: 'SET_ROOMS', payload: data })
         })
         socket.on('accessories_update', (data) => {
-            console.log({accessoriesUpdate: true, data})
-            dispatch({ type: 'SET_HOMEBRIDGE_ACCESSORIES', payload: data })
+            dispatch({ type: 'SET_HOMEBRIDGE_ACCESSORIES', payload: { accessories: data } })
         })
     }, [])
 
