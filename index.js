@@ -398,9 +398,6 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
         .then(function (response) {
             axios(accessories(response.data.access_token))
                 .then((accessoriesResponse) => {
-                    console.log(_.filter(accessoriesResponse.data, (item) => {
-                        return legalTypes.includes(item.type)
-                    }));
                     res.send(_.filter(accessoriesResponse.data, (item) => {
                         return legalTypes.includes(item.type)
                     }));

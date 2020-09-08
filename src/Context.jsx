@@ -8,9 +8,14 @@ const socket = io(process.env.REACT_APP_LUMEN_HOST);
 
 export const Context = React.createContext();
 
+export const useLumenContext = () => React.useContext(Context);
+
 const reducer = (state, action) => {
     const newState = { ...state };
     switch (action.type) {
+        case 'SET_HOMEBRIDGE_ACCESSORIES':
+            newState.accessories = action.payload.accessories;
+            break;
         case 'SET_ROOMS':
             newState.rooms = action.payload.rooms;
             newState.house = action.payload.house;
@@ -47,7 +52,8 @@ const initialState = {
             color: 'white',
             backgroundColor: NIGHT_BACKGROUND_COLOR
         }
-    }
+    },
+    accessories: [],
 };
 
 export const Provider = (props) => {

@@ -1,9 +1,13 @@
 import React from 'react';
 import { getHomebridgeAccessories } from '../../api/rest';
+import { useLumenContext } from '../../Context';
 
 export const Homebridge = () => {
-    React.useLayoutEffect(() => {
-        getHomebridgeAccessories();
+    const { dispatch } = useLumenContext();
+    React.useLayoutEffect(async() => {
+        const accessories = await getHomebridgeAccessories();
+        debugger
+        dispatch({ type: "SET_HOMEBRIDGE_ACCESSORIES", payload: { accessories } })
     }, []);
     return <div>
         homebridge

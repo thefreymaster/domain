@@ -13,6 +13,7 @@ import PreviousMonth from './components/PreviousMonth';
 import { Context } from './Context';
 import { GREY, WHITE, NIGHT_BACKGROUND_COLOR, NIGHT_BACKGROUND_COLOR_CONTAINER, DAY_BACKGROUND_COLOR_CONTAINER } from './constants';
 import ThemeToggle from './components/Theme';
+import { Homebridge } from './components/Homebridge';
 
 
 function App() {
@@ -52,7 +53,7 @@ function App() {
           <Flex direction="column" alignItems="flex-start" borderRadius="3px 10px 10px" width="100%" margin="30px 30px 30px 30px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
             <Branding />
             <Flex direction="column" width="100%" padding="0px 10px">
-              {/* <Status /> */}
+              <Homebridge />
             </Flex>
           </Flex>
         </Flex>
