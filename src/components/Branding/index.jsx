@@ -2,7 +2,7 @@ import React from 'react';
 import Flex from '../../common/Flex';
 import Title from '../../common/Title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLightbulb, faTachometerAlt, faMicrochip, faShapes } from '@fortawesome/free-solid-svg-icons'
+import { faLightbulb, faTachometerAlt, faMicrochip, faShapes, faHome } from '@fortawesome/free-solid-svg-icons'
 import { Context } from '../../Context';
 import { NIGHT_BACKGROUND_COLOR, WHITE } from '../../constants';
 
@@ -19,9 +19,9 @@ const Branding = () => {
             direction="column"
         >
             <FontAwesomeIcon color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}
-                size="2x" icon={faLightbulb} />
+                size="2x" icon={faHome} />
             <div style={{ marginTop: 10 }} />
-            <Title color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}>Hue Analytics</Title>
+            <Title color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}>Home Govener</Title>
         </Flex>
     )
 }

@@ -70,6 +70,10 @@ export const Provider = (props) => {
         socket.on('groups_update', (data) => {
             dispatch({ type: 'SET_ROOMS', payload: data })
         })
+        socket.on('accessories_update', (data) => {
+            console.log({accessoriesUpdate: true, data})
+            dispatch({ type: 'SET_HOMEBRIDGE_ACCESSORIES', payload: data })
+        })
     }, [])
 
     return (

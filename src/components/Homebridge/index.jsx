@@ -1,15 +1,25 @@
 import React from 'react';
 import { getHomebridgeAccessories } from '../../api/rest';
 import { useLumenContext } from '../../Context';
+import Flex from '../../common/Flex';
+import Nest from './Nest';
 
 export const Homebridge = () => {
-    const { dispatch } = useLumenContext();
-    React.useLayoutEffect(async() => {
-        const accessories = await getHomebridgeAccessories();
-        console.log(accessories)
-        dispatch({ type: "SET_HOMEBRIDGE_ACCESSORIES", payload: { accessories } })
+    const { dispatch, homebridge } = useLumenContext();
+    React.useLayoutEffect(() => {
+        const fetchAccessories = async() => {
+            const accessories = await getHomebridgeAccessories();
+            console.log(accessories)
+            dispatch({ type: "SET_HOMEBRIDGE_ACCESSORIES", payload: { accessories } })
+        }
+        fetchAccessories();
     }, []);
-    return <div>
-        homebridge
-    </div>
+    if(!homebridge.system){
+        return "loading accessories"
+    }
+    return (
+        <Flex direction="column">
+            <Nest />
+        </Flex>
+    )
 }

@@ -397,6 +397,40 @@ const filterTypes = (accessoriesToFilter, filterAttribute, type) => _.filter(acc
     return item[filterAttribute].includes(type)
 })
 
+const getAccessoriesForUpdate = () => {
+    setTimeout(() => {
+        axios(config)
+            .then(function (response) {
+                axios(accessories(response.data.access_token))
+                    .then(({ data }) => {
+                        const system = filterTypes(data, "type", "ProtocolInformation");
+                        const thermostat = filterTypes(data, "type", "Thermostat");
+                        const eco = filterTypes(data, "serviceName", "Eco Mode");
+                        const fan = filterTypes(data, "type", "Fan");
+                        const temperatures = filterTypes(data, "type", "TemperatureSensor");
+                        const computers = filterTypes(data, "serviceName", "Desktop Gaming PC");
+                        io.send('accessories_update', {
+                            system,
+                            nest: {
+                                thermostat,
+                                eco,
+                                fan,
+                            },
+                            temperatures,
+                            computers,
+                        });
+                        getAccessoriesForUpdate();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }, 10000);
+}
+
 app.get(`/api/homebridge/accessories`, (req, res) => {
     axios(config)
         .then(function (response) {
@@ -419,6 +453,7 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
                         temperatures,
                         computers,
                     });
+                    getAccessoriesForUpdate();
                 })
                 .catch(function (error) {
                     console.log(error);
