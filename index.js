@@ -409,7 +409,7 @@ const getAccessoriesForUpdate = () => {
                         const fan = filterTypes(data, "type", "Fan");
                         const temperatures = filterTypes(data, "type", "TemperatureSensor");
                         const computers = filterTypes(data, "serviceName", "Desktop Gaming PC");
-                        io.send('accessories_update', {
+                        io.emit('accessories_update', {
                             system,
                             nest: {
                                 thermostat,
