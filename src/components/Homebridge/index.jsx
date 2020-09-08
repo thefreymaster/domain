@@ -4,6 +4,7 @@ import { useLumenContext } from '../../Context';
 import Flex from '../../common/Flex';
 import Nest from './Nest';
 import Temperatures from './Temperatures';
+import GamingPC from './GamingPC';
 
 export const Homebridge = () => {
     const { dispatch, homebridge } = useLumenContext();
@@ -22,6 +23,7 @@ export const Homebridge = () => {
         <Flex direction="column">
             <Nest />
             <Temperatures />
+            <GamingPC />
         </Flex>
     )
 }

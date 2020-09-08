@@ -1,5 +1,5 @@
 .breath-animation-nest-cool{
-    animation: breath 5s infinite;
+    animation: breath-nest-cool 5s infinite;
 }
 
 @keyframes breath-nest-cool{
@@ -9,7 +9,7 @@
 }
 
 .breath-animation-nest-heat{
-    animation: breath 5s infinite;
+    animation: breath-nest-heat 5s infinite;
 }
 
 @keyframes breath-nest-heat{
