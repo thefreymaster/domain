@@ -43,7 +43,7 @@ const Nest = () => {
     const { values, serviceCharacteristics } = data;
     console.log(data);
     return (
-        <Flex direction="column" justifyContent="center" alignItems="center" margin="30px 0px 0px 0px">
+        <Flex direction="column" justifyContent="center" alignItems="center" margin="20px 0px 0px 0px">
             <Flex className={classNames({
                 'breath-animation-nest-heat': values.CurrentHeatingCoolingState === 1,
                 'breath-animation-nest-cool': values.CurrentHeatingCoolingState === 2,
@@ -60,7 +60,7 @@ const Nest = () => {
                 <Font color={isDay ? null : DAY_BACKGROUND_COLOR_CONTAINER} style={{ marginLeft: 10 }} fontSize={36}>{convertToF(values.CurrentTemperature).toFixed(0)}°</Font>
             </Flex>
             <Flex direction="row" margin="10px">
-                <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px">
+                <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px 0px 5px 0px">
                     <Font fontSize="10px">Target</Font>
                     <Flex borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
                         <Font>{convertToF(values.TargetTemperature).toFixed(0)}°</Font>

@@ -10,7 +10,7 @@ const Temperatures = () => {
     const { homebridge, isDay } = useLumenContext();
     const { temperatures } = homebridge;
     return (
-        <Flex style={{ flexWrap: "wrap" }} direction="row" margin="30px 0px 0px 0px" width="100%">
+        <Flex style={{ flexWrap: "wrap" }} direction="row" margin="20px 0px 0px 0px" width="100%">
             {temperatures.map(temperature => {
                 const serviceName = temperature.serviceName.replace("Temperature", "")
                 return (
