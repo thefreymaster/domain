@@ -397,8 +397,10 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
     axios(config)
         .then(function (response) {
             axios(accessories(response.data.access_token))
-                .then(function (accessoriesResponse) {
-                    const legalccessories = _.filter(accessoriesResponse, legalTypes)
+                .then(async (accessoriesResponse) => {
+                    const legalccessories = await Promise.all(
+                        _.filter(accessoriesResponse, legalTypes)
+                    )
                     res.send(legalccessories);
                 })
                 .catch(function (error) {
