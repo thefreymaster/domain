@@ -53,7 +53,9 @@ const initialState = {
             backgroundColor: NIGHT_BACKGROUND_COLOR
         }
     },
-    homebridge: {},
+    homebridge: {
+        success: false,
+    },
 };
 
 export const Provider = (props) => {

@@ -444,6 +444,7 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
                     const computers = filterTypes(data, "serviceName", "Desktop Gaming PC");
 
                     res.send({
+                        success: true,
                         system,
                         nest: {
                             thermostat,

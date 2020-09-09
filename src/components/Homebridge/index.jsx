@@ -22,6 +22,7 @@ export const Homebridge = () => {
     return (
         <Flex direction="column">
             <Nest />
+            <Flex flexGrow />
             <Temperatures />
             <GamingPC />
         </Flex>
