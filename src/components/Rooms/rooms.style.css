@@ -1,0 +1,10 @@
+.room-toggle{
+    align-items: flex-start;
+    height: 60px;
+    width: 100%;
+    padding: 12px;
+    font-family: "Fredoka One", cursive;
+    margin: 10px 0px 10px 0px;
+    cursor: pointer;
+    transition: background-color 500ms ease-in-out;
+}

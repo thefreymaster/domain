@@ -5,5 +5,47 @@
 @keyframes breath{
     from {background-color: #ffd34d;}
     50% {background-color: #f9e199;}
-    to {background-color: #ffd34d;} 
+    to {background-color: #ffd864;} 
+}
+
+.cursor-hover:hover{
+    cursor: pointer;
+}
+
+.status{
+    transition: box-shadow 100ms ease-in-out;  
+}
+
+.status-day-active{
+    box-shadow: rgba(141, 141, 141, 0.5) 0px 0px 0px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    background-color: #f5f5f5;
+}
+
+.status-day{
+    box-shadow: rgba(141, 141, 141, 0.5) 0px 1px 2px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    background-color: #eaeaea;
+
+}
+
+.status-day:hover{
+    box-shadow: rgba(141, 141, 141, 0.5) 0px 5px 8px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    transition: box-shadow 100ms ease-in-out;
+}
+
+.status-night{
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 1px 2px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    transition: box-shadow 100ms ease-in-out;
+    transition: 0ms 100ms ease-in-out;
+    background-color: #292929;
+}
+
+.status-night:active{
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    background-color: #232323;
+    transition: 0ms 100ms ease-in-out;
+}
+
+.status-night:hover{
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 8px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 3px 0px;
+    transition: box-shadow 100ms ease-in-out;
 }

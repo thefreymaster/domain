@@ -2,14 +2,26 @@ import React from 'react';
 import Flex from '../../common/Flex';
 import Title from '../../common/Title';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLightbulb } from '@fortawesome/free-solid-svg-icons'
+import { faLightbulb, faTachometerAlt, faMicrochip, faShapes, faHome } from '@fortawesome/free-solid-svg-icons'
+import { Context } from '../../Context';
+import { NIGHT_BACKGROUND_COLOR, WHITE } from '../../constants';
 
 const Branding = () => {
+    const { isDay } = React.useContext(Context);
     return (
-        <Flex borderRadius="3px 30px 30px 30px" backgroundColor="white" height="120px" width="100%" justifyContent="center" alignItems="center" direction="column" style={{borderBottom: 'dashed 2px #ffffff3b'}}>
-            <FontAwesomeIcon size="2x" icon={faLightbulb} />
+        <Flex
+            borderRadius="3px 10px 10px"
+            backgroundColor={isDay ? NIGHT_BACKGROUND_COLOR : WHITE}
+            height="120px"
+            width="100%"
+            justifyContent="center"
+            alignItems="center"
+            direction="column"
+        >
+            <FontAwesomeIcon color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}
+                size="2x" icon={faHome} />
             <div style={{ marginTop: 10 }} />
-            <Title color="#333333">Lumen</Title>
+            <Title color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}>The Ranch</Title>
         </Flex>
     )
 }

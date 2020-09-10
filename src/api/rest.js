@@ -59,7 +59,7 @@ export const getAnalytics = () => axios.get('/api/analytics')
 
 export const turnRoomOn = (id, setLoading) => axios.get(`/api/room/on/${id}`)
     .then(response => {
-        setLoading(0);
+        // setLoading(0);
         return response
     })
     .catch(function (error) {
@@ -69,8 +69,16 @@ export const turnRoomOn = (id, setLoading) => axios.get(`/api/room/on/${id}`)
 
 export const turnRoomOff = (id, setLoading) => axios.get(`/api/room/off/${id}`)
     .then(response => {
-        setLoading(0);
         return response
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })
+
+export const getHomebridgeAccessories = () => axios.get(`/api/homebridge/accessories`)
+    .then(response => {
+        return response.data;
     })
     .catch(function (error) {
         // handle error

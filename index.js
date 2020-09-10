@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 require('dotenv').config();
 const app = express();
 const low = require('lowdb');
@@ -14,6 +15,7 @@ const db = low(adapter);
 app.use(express.json());
 app.use(express.static(__dirname + '/build'));
 app.use(express.static(__dirname + '/images'));
+app.use(cors());
 
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
@@ -139,7 +141,7 @@ const getAnalytics = ({ newData, oldData }) => {
             }
         }
     })
-    console.log({ newData, oldData })
+    // console.log({ newData, oldData })
 }
 
 const getGroups = () => {
@@ -160,7 +162,7 @@ const getGroups = () => {
                         on: group.action.on,
                     }
                 })
-                console.log(compactGroups)
+                // console.log(compactGroups)
                 if (!db.has('rooms').value()) {
                     db.defaults({
                         rooms: [],
@@ -323,7 +325,7 @@ app.get(`/api/rooms`, (req, res) => {
                     return group;
                 }
             })
-            console.log(_.compact(groups))
+            // console.log(_.compact(groups))
             io.emit('groups_update', db.getState());
             res.send(db.getState());
         })
@@ -367,6 +369,122 @@ app.get(`/api/analytics`, (req, res) => {
     res.send(db.getState());
 })
 
+const data = {
+    username: 'admin',
+    password: 'admin',
+};
+
+const config = {
+    method: 'post',
+    url: 'http://192.168.124.10:8080/api/auth/login',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    data: data
+};
+
+const accessories = (token) => ({
+    method: 'get',
+    url: 'http://192.168.124.10:8080/api/accessories',
+    headers: {
+        'Authorization': `Bearer ${token}`
+    },
+})
+
+const legalTypes = ['TemperatureSensor', 'ProtocolInformation', 'Thermostat'];
+
+const filterTypes = (accessoriesToFilter, filterAttribute, type) => _.filter(accessoriesToFilter, (item) => {
+    return item[filterAttribute].includes(type)
+})
+
+const getAccessoriesForUpdate = () => {
+    setTimeout(() => {
+        axios(config)
+            .then(function (response) {
+                axios(accessories(response.data.access_token))
+                    .then(({ data }) => {
+                        const system = filterTypes(data, "type", "ProtocolInformation");
+                        const thermostat = filterTypes(data, "type", "Thermostat");
+                        const eco = filterTypes(data, "serviceName", "Eco Mode");
+                        const fan = filterTypes(data, "type", "Fan");
+                        const temperatures = filterTypes(data, "type", "TemperatureSensor");
+                        const computers = filterTypes(data, "serviceName", "Desktop Gaming PC");
+                        io.emit('accessories_update', {
+                            system,
+                            nest: {
+                                thermostat,
+                                eco,
+                                fan,
+                            },
+                            temperatures,
+                            computers,
+                        });
+                        getAccessoriesForUpdate();
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    })
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }, 10000);
+}
+
+app.get(`/api/homebridge/accessories`, (req, res) => {
+    axios(config)
+        .then(function (response) {
+            axios(accessories(response.data.access_token))
+                .then(({ data }) => {
+                    const system = filterTypes(data, "type", "ProtocolInformation");
+                    const thermostat = filterTypes(data, "type", "Thermostat");
+                    const eco = filterTypes(data, "serviceName", "Eco Mode");
+                    const fan = filterTypes(data, "type", "Fan");
+                    const temperatures = filterTypes(data, "type", "TemperatureSensor");
+                    const computers = filterTypes(data, "serviceName", "Desktop Gaming PC");
+
+                    res.send({
+                        success: true,
+                        system,
+                        nest: {
+                            thermostat,
+                            eco,
+                            fan,
+                        },
+                        temperatures,
+                        computers,
+                    });
+                    getAccessoriesForUpdate();
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    res.send({ error: true, message: error });
+                })
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.send({ error: true, message: error });
+        })
+})
+
+app.get(`/api/homebridge/accessories/all`, (req, res) => {
+    axios(config)
+        .then(function (response) {
+            axios(accessories(response.data.access_token))
+                .then(function (accessoriesResponse) {
+                    res.send(accessoriesResponse.data);
+                })
+                .catch(function (error) {
+                    console.log(error);
+                    res.send({ success: false, error: error });
+                })
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.send({ success: false, error: error });
+        })
+})
+
 app.get('/*', function (request, response) {
     response.sendFile(path.resolve(__dirname, 'build/index.html'));
 });
@@ -375,3 +493,4 @@ server.listen(port, () => {
     getGroups();
     console.log(`Lights running on 192.168.124.10:${port}`)
 });
+

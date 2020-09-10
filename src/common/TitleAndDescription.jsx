@@ -1,17 +1,15 @@
 import React from 'react';
 import Flex from './Flex';
+import { Context } from '../Context';
+import { DAY_COLOR, DAY_COLOR_SECONDARY } from '../constants';
 
 const TitleAndDescription = (props) => {
+    const { isDay } = React.useContext(Context);
     const inline = {
-        item: {
-            padding: '12px 0px 12px 0px',
-            color: 'white',
-            fontFamily: '"Fredoka One", cursive',
-        },
         name: {
             fontSize: props.fontSize,
             marginLeft: props.noMargin ? 0 : 10,
-            color: props.titleColor || 'white',
+            color: props.titleColor ? props.titleColor : isDay ? DAY_COLOR : 'white',
             fontFamily: '"Fredoka One", cursive',
         },
         icon: {
@@ -22,7 +20,7 @@ const TitleAndDescription = (props) => {
         description: {
             fontSize: 11,
             marginLeft: props.noMargin ? 0 : 10,
-            color: '#ffffff6b',
+            color: props.secondaryColor ? props.secondaryColor : isDay ? DAY_COLOR_SECONDARY : 'white',
             fontFamily: '"Fredoka One", cursive',
         }
     }
