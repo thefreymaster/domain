@@ -458,12 +458,12 @@ app.get(`/api/homebridge/accessories`, (req, res) => {
                 })
                 .catch(function (error) {
                     console.log(error);
-                    res.send({ error: true, message: error });
+                    res.send({ error: true });
                 })
         })
         .catch(function (error) {
             console.log(error);
-            res.send({ error: true, message: error });
+            res.send({ error: true });
         })
 })
 
