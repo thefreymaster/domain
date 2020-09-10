@@ -32,7 +32,6 @@ export const Homebridge = () => {
         return (
             <Flex height="100%" direction="column" justifyContent="center" alignItems="center">
                 <FontAwesomeIcon color={isDay ? NIGHT_BACKGROUND_COLOR : WHITE} size="2x" icon={faSpinner} />
-                <Font>Loading Accessories</Font>
             </Flex>
         )
     }
