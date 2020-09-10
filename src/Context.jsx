@@ -55,6 +55,7 @@ const initialState = {
     },
     homebridge: {
         success: false,
+        error: false,
     },
 };
 
