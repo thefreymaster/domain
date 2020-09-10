@@ -51,13 +51,13 @@ const Nest = () => {
                 // boxShadow
                 justifyContent="center"
                 alignItems="center"
-                height="100px"
-                width="100px"
-                borderRadius="100px"
+                height="160px"
+                width="160px"
+                borderRadius="160px"
                 // backgroundColor={isDay ? NIGHT_BACKGROUND_COLOR_CONTAINER : DAY_BACKGROUND_COLOR_CONTAINER}
                 style={{border: "4px solid grey"}}
             >
-                <Font color={isDay ? null : DAY_BACKGROUND_COLOR_CONTAINER} style={{ marginLeft: 10 }} fontSize={36}>{convertToF(values.CurrentTemperature).toFixed(0)}°</Font>
+                <Font color={isDay ? null : DAY_BACKGROUND_COLOR_CONTAINER} style={{ marginLeft: 10 }} fontSize={48}>{convertToF(values.CurrentTemperature).toFixed(0)}°</Font>
             </Flex>
             <Flex direction="row" margin="10px">
                 <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px 0px 5px 0px">

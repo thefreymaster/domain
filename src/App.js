@@ -52,7 +52,7 @@ function App() {
         <Flex width="20%">
           <Flex direction="column" alignItems="flex-start" borderRadius="3px 10px 10px" width="100%" margin="30px 30px 30px 30px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
             <Branding />
-            <Flex direction="column" width="100%" padding="0px 10px">
+            <Flex direction="column" width="100%" height="100%" padding="0px 10px">
               <Homebridge />
             </Flex>
           </Flex>
