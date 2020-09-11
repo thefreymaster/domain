@@ -312,16 +312,16 @@ const getGroups = () => {
                     }
                 })
                 var isDifferent = _.differenceWith(newData, oldDataFiltered, _.isEqual);
-                console.log(isDifferent);
-                // console.log({ newData, oldData: oldDataFiltered })
-                getAnalytics({ newData, oldData: db.get('rooms').value() })
-                io.emit('groups_update', db.getState());
+                getAnalytics({ newData, oldData: db.get('rooms').value() });
+                if (isDifferent.length > 1) {
+                    io.emit('groups_update', db.getState());
+                }
                 getGroups();
             })
             .catch(function (error) {
                 console.log(error);
             })
-    }, 2000);
+    }, 1000);
 }
 
 app.get(`/api/rooms`, (req, res) => {
