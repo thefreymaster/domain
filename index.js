@@ -305,7 +305,14 @@ const getGroups = () => {
                         }).write();
                     })
                 }
-                console.log({ newData, oldData: db.get('rooms').value() })
+                const oldDataFiltered = db.get('rooms').value().map(item => {
+                    return {
+                        id: item.id,
+                        on: item.on,
+                    }
+                })
+                
+                console.log({ newData, oldData: oldDataFiltered })
                 getAnalytics({ newData, oldData: db.get('rooms').value() })
                 io.emit('groups_update', db.getState());
                 getGroups();
