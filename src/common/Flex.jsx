@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import Title from './Title';
 import { Context } from '../Context';
 import { DAY_BOX_SHADOW, NIGHT_BOX_SHADOW } from '../constants';
@@ -27,12 +28,12 @@ const Flex = (props) => {
     return (
         <React.Fragment>
             <Title style={{ minHeight: props.title && 30 }}>{props.title}</Title>
-            <div 
-                onMouseDown={props.onMouseDown} 
-                className={props.className} 
-                style={inline} 
-                onClick={props.onClick} 
-                onMouseOver={props.onMouseOver} 
+            <div
+                onMouseDown={props.onMouseDown}
+                className={classNames(props.className, { 'zoom-in-animation': props.animate })}
+                style={inline}
+                onClick={props.onClick}
+                onMouseOver={props.onMouseOver}
                 onMouseLeave={props.onMouseLeave}>
                 {props.children}
             </div>

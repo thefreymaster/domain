@@ -14,6 +14,7 @@ import { Context } from './Context';
 import { GREY, WHITE, NIGHT_BACKGROUND_COLOR, NIGHT_BACKGROUND_COLOR_CONTAINER, DAY_BACKGROUND_COLOR_CONTAINER } from './constants';
 import ThemeToggle from './components/Theme';
 import { Homebridge } from './components/Homebridge';
+import LightMetrics from './components/LightMetrics';
 
 
 function App() {
@@ -71,7 +72,7 @@ function App() {
           <Flex height="100%" width="66%" direction="column">
             <Flex direction="row">
               <Flex borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
-                <Power />
+                <LightMetrics />
               </Flex>
               <Flex borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
                 <PreviousMonth />
