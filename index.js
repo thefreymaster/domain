@@ -314,7 +314,7 @@ const getGroups = () => {
                 var isDifferent = _.differenceWith(newData, oldDataFiltered, _.isEqual);
                 console.log({ isDifferent, length: isDifferent.length })
                 getAnalytics({ newData, oldData: db.get('rooms').value() });
-                if (isDifferent.length > 1) {
+                if (isDifferent.length > 0) {
                     io.emit('groups_update', db.getState());
                 }
                 getGroups();
