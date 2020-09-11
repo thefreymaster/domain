@@ -37,7 +37,7 @@ export const Homebridge = () => {
         )
     }
     return (
-        <Flex animate direction="column" justifyContent="center" alignItems="center" height="100%">
+        <Flex animate direction="column" justifyContent="center" alignItems="center" height="100%" width="calc(100%)">
             <Nest />
             <Flex style={{ flexGrow: 1 }} />
             <Temperatures />

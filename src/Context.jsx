@@ -71,7 +71,6 @@ export const Provider = (props) => {
             dispatch({ type: 'SET_ROOMS', payload: res.data })
         })
         socket.on('groups_update', (data) => {
-            debugger
             dispatch({ type: 'SET_ROOMS', payload: data })
         })
         socket.on('accessories_update', (data) => {

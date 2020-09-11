@@ -61,20 +61,22 @@ function App() {
       }
       <Flex width={isMobile ? "100%" : "80%"} margin={isMobile ? "30px 30px 30px 30px" : "30px 30px 30px 0px"}>
         <Flex height="100%" width={isMobile ? "100%" : "33%"} margin={isMobile ? "0px 0px 0px 0px" : "0px 30px 0px 0px"} direction="column">
-          <Flex borderRadius="3px 10px 10px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
-            <Hours />
-          </Flex>
-          <Flex wrap borderRadius="3px 10px 10px" justifyContent="flex-start" title={isMobile ? "Breakdown" : "Controls"} direction="row" padding="20px" height="calc(100% - 160px)" width="calc(100%)" margin={`0px ${isMobile ? 0 : 30} 0px 0px`} backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
-            {isMobile ? <Breakdown /> : <Status />}
+          {!isMobile &&
+            <Flex animate borderRadius="3px 10px 10px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+              <Hours />
+            </Flex>
+          }
+          <Flex wrap borderRadius="3px 10px 10px" justifyContent="flex-start" title={isMobile ? "Breakdown" : "Controls"} direction="row" padding="20px" height={isMobile ? "calc(100%)" : "calc(100% - 160px)"} width="calc(100%)" margin={`0px ${isMobile ? 0 : 30} 0px 0px`} backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+            {isMobile ? <Homebridge /> : <Status />}
           </Flex>
         </Flex>
         {!isMobile &&
           <Flex height="100%" width="66%" direction="column">
             <Flex direction="row">
-              <Flex borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+              <Flex animate borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
                 <LightMetrics />
               </Flex>
-              <Flex borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
+              <Flex animate borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={isDay ? WHITE : NIGHT_BACKGROUND_COLOR} boxShadow>
                 <PreviousMonth />
               </Flex>
             </Flex>
