@@ -305,6 +305,7 @@ const getGroups = () => {
                         }).write();
                     })
                 }
+                console.log({ newData, oldData: db.get('rooms').value() })
                 getAnalytics({ newData, oldData: db.get('rooms').value() })
                 io.emit('groups_update', db.getState());
                 getGroups();
