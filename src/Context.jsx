@@ -71,10 +71,10 @@ export const Provider = (props) => {
             dispatch({ type: 'SET_ROOMS', payload: res.data })
         })
         socket.on('groups_update', (data) => {
-            // dispatch({ type: 'SET_ROOMS', payload: data })
+            dispatch({ type: 'SET_ROOMS', payload: data })
         })
         socket.on('accessories_update', (data) => {
-            // dispatch({ type: 'SET_HOMEBRIDGE_ACCESSORIES', payload: { accessories: data } })
+            dispatch({ type: 'SET_HOMEBRIDGE_ACCESSORIES', payload: { accessories: data } })
         })
     }, [])
 
