@@ -2,10 +2,14 @@
     animation: breath-nest-cool 5s infinite;
 }
 
+.breath-animation-nest-cool div{
+    color: white !important;
+}
+
 @keyframes breath-nest-cool{
-    from {background-color: #435ffd;}
+    from {background-color: #05f;}
     50% {background-color: #0084ff;}
-    to {background-color: #435ffd;} 
+    to {background-color: #05f;} 
 }
 
 .breath-animation-nest-heat{
