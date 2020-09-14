@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../../common/Container';
 import Flex from '../../common/Flex';
 import Branding from '../../components/Branding';
-import Hours from '../../components/Hours';
+import Hours from '../../components/Weather';
 import Status from '../../components/Status';
 import Breakdown from '../../components/Breakdown';
 import { isMobile, isTablet, isBrowser } from 'react-device-detect';
@@ -32,7 +32,7 @@ const Desktop = () => {
                 </Flex>
                 <Flex width="77%" margin="30px 30px 30px 0px">
                     <Flex height="100%" width="33%" margin="0px 30px 0px 0px" direction="column">
-                        <Flex animate borderRadius="3px 10px 10px" title="Usage" padding="20px" height="100px" width="100%" backgroundColor={dayNightBackgroundColor} boxShadow>
+                        <Flex animate borderRadius="3px 10px 10px"  title="Weather" padding="20px" height="100px" width="100%" backgroundColor={dayNightBackgroundColor} boxShadow>
                             <Hours />
                         </Flex>
                         <Flex wrap borderRadius="3px 10px 10px" justifyContent="flex-start" title="Controls" direction="row" padding="20px" height="calc(100% - 160px)" width="calc(100%)" margin={`0px ${isMobile ? 0 : 30} 0px 0px`} backgroundColor={dayNightBackgroundColor} boxShadow>
@@ -40,11 +40,11 @@ const Desktop = () => {
                         </Flex>
                     </Flex>
                     <Flex height="100%" width="66%" direction="column">
-                        <Flex direction="row">
-                            <Flex animate borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="30px 30px 0px 0px" backgroundColor={dayNightBackgroundColor} boxShadow>
+                        <Flex direction="row"  title="Usage">
+                            <Flex animate borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="0px 30px 0px 0px" backgroundColor={dayNightBackgroundColor} boxShadow>
                                 <LightMetrics />
                             </Flex>
-                            <Flex animate borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="30px 0px 0px 0px" backgroundColor={dayNightBackgroundColor} boxShadow>
+                            <Flex animate borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="0px 0px 0px 0px" backgroundColor={dayNightBackgroundColor} boxShadow>
                                 <PreviousMonth />
                             </Flex>
                         </Flex>

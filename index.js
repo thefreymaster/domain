@@ -495,7 +495,7 @@ app.get(`/api/homebridge/accessories/all`, (req, res) => {
 
 app.get(`/api/weather/:id`, (req, res) => {
     const { id } = req.params;
-    const url = `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.OPENWEATHERMAP_TOKEN}`;
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.OPENWEATHERMAP_TOKEN}&units=imperial`;
     console.log({ url, id });
     axios.get(url)
         .then(function (response) {
