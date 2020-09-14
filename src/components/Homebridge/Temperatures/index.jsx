@@ -16,8 +16,10 @@ const Temperatures = () => {
                 return (
                     <Flex width="50%" direction="column" height="100px" justifyContent="center" alignItems="center">
                         <Font fontSize="10px">{serviceName}</Font>
-                        <Flex borderRadius="60px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="60px" height="60px">
-                            <Font>{convertToF(temperature.values.CurrentTemperature).toFixed(0)}°</Font>
+                        <Flex
+                            style={{ border: "3px solid #e3e3e3" }}
+                            borderRadius="60px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="60px" height="60px">
+                            <Font style={{ marginLeft: 2 }}>{convertToF(temperature.values.CurrentTemperature).toFixed(0)}°</Font>
                         </Flex>
                     </Flex>
                 )

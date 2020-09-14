@@ -12,8 +12,8 @@ const LightMetrics = () => {
     const month = new Date().getMonth();
     const [hours] = filter(context.house.analytics, { id: month }) || 0;
 
-    const power = parseFloat(context.house.totalPowerOn).toFixed(3) || 0;
-    return (<TitleAndDescription fontSize={28} title={`${power}W • ${(hours.totalTimeOn / 3600000).toFixed(2)}H`} description="Power • Hours" />)
+    const power = parseFloat(context.house.totalPowerOn).toFixed(1) || 0;
+    return (<TitleAndDescription fontSize={28} title={`${power}W • ${(hours.totalTimeOn / 3600000).toFixed(0)}H`} description="Power • Hours" />)
 }
 
 export default LightMetrics;

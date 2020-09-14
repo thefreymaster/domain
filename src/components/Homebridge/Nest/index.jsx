@@ -6,6 +6,7 @@ import Flex from '../../../common/Flex';
 import Font from '../../../common/Font';
 import { DAY_BACKGROUND_COLOR_CONTAINER, RED, BLUE, NIGHT_BACKGROUND_COLOR, NIGHT_BACKGROUND_COLOR_CONTAINER, DAY_COLOR_SECONDARY } from '../../../constants';
 import './nest.style.css';
+import { isTablet, isBrowser } from 'react-device-detect';
 
 const getBackgroundColorDay = (value, isDay) => {
     if (value === 0) {
@@ -50,33 +51,35 @@ const Nest = () => {
                 // boxShadow
                 justifyContent="center"
                 alignItems="center"
-                height="160px"
-                width="160px"
+                height={isBrowser ? "160px" : "120px"}
+                width={isBrowser ? "160px" : "120px"}
                 borderRadius="160px"
                 // backgroundColor={isDay ? NIGHT_BACKGROUND_COLOR_CONTAINER : DAY_BACKGROUND_COLOR_CONTAINER}
-                style={{border: "4px solid grey"}}
+                style={{ border: "6px solid #e3e3e3", boxShadow: `inset 0px 0px 0px ${isTablet ? 10 : 15}px #333333` }}
             >
-                <Font color={isDay ? null : DAY_BACKGROUND_COLOR_CONTAINER} style={{ marginLeft: 10 }} fontSize={48}>{convertToF(values.CurrentTemperature).toFixed(0)}°</Font>
+                <Font color={isDay ? null : DAY_BACKGROUND_COLOR_CONTAINER} style={{ marginLeft: 10 }} fontSize={isTablet ? 36 : 48}>{convertToF(values.CurrentTemperature).toFixed(0)}°</Font>
             </Flex>
             <Flex direction="row" margin="10px">
                 <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px 0px 5px 0px">
                     <Font fontSize="10px">Target</Font>
-                    <Flex borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
+                    <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
                         <Font>{convertToF(values.TargetTemperature).toFixed(0)}°</Font>
                     </Flex>
                 </Flex>
                 <Flex direction="column" justifyContent="center" alignItems="center" width="75px" margin="5px">
                     <Font fontSize="10px">Status</Font>
-                    <Flex borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="75px">
+                    <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="75px">
                         <Font>{getHeatCoolStatus(values.CurrentHeatingCoolingState)}</Font>
                     </Flex>
                 </Flex>
-                <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px">
-                    <Font fontSize="10px">Eco</Font>
-                    <Flex borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
-                        <Font>{ecoData.values.On ? "Yes" : "No"}</Font>
+                {isBrowser &&
+                    <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px">
+                        <Font fontSize="10px">Eco</Font>
+                        <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
+                            <Font>{ecoData.values.On ? "Yes" : "No"}</Font>
+                        </Flex>
                     </Flex>
-                </Flex>
+                }
             </Flex>
         </Flex>
     )
