@@ -499,7 +499,7 @@ app.get(`/api/weather/:id`, (req, res) => {
     console.log({ url, id });
     axios.get(url)
         .then(function (response) {
-            res.send(response);
+            res.send(response.data);
         })
         .catch(function (error) {
             console.log(error);
