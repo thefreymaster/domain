@@ -1,7 +1,7 @@
 import React from 'react';
 import io from 'socket.io-client';
 import { isEqual } from 'lodash';
-import { getRooms, getAnalytics } from './api/rest';
+import { getRooms, getAnalytics, getWeather } from './api/rest';
 import { NIGHT_BACKGROUND_COLOR } from './constants';
 
 const socket = io(process.env.REACT_APP_LUMEN_HOST);
@@ -28,6 +28,9 @@ const reducer = (state, action) => {
             break;
         case 'SET_IS_NIGHT':
             newState.isDay = false;
+            break;
+        case 'SET_WEATHER':
+            newState.weather = action.payload;
             break;
         default:
             throw new Error();
@@ -59,23 +62,34 @@ const initialState = {
     },
 };
 
+const initialData = (dispatch) => {
+    const hour = new Date().getHours();
+    if (hour >= 6 && hour <= 17) {
+        dispatch({ type: 'SET_IS_DAY' })
+    }
+    getRooms().then((res) => {
+        dispatch({ type: 'SET_ROOMS', payload: res.data })
+    })
+
+    getWeather(process.env.REACT_APP_OPENWEATHERMAP_ID).then((res) => {
+        dispatch({ type: 'SET_WEATHER', payload: res.data })
+    })
+}
+
+const subscriptions = (dispatch) => {
+    socket.on('groups_update', (data) => {
+        dispatch({ type: 'SET_ROOMS', payload: data })
+    })
+    socket.on('accessories_update', (data) => {
+        dispatch({ type: 'SET_HOMEBRIDGE_ACCESSORIES', payload: { accessories: data } })
+    })
+}
+
 export const Provider = (props) => {
     const [state, dispatch] = React.useReducer(reducer, initialState);
     React.useLayoutEffect(() => {
-        const hour = new Date().getHours();
-        if (hour >= 6 && hour <= 17) {
-            dispatch({ type: 'SET_IS_DAY' })
-        }
-        const rooms = getRooms();
-        rooms.then((res) => {
-            dispatch({ type: 'SET_ROOMS', payload: res.data })
-        })
-        socket.on('groups_update', (data) => {
-            dispatch({ type: 'SET_ROOMS', payload: data })
-        })
-        socket.on('accessories_update', (data) => {
-            dispatch({ type: 'SET_HOMEBRIDGE_ACCESSORIES', payload: { accessories: data } })
-        })
+        initialData(dispatch);
+        subscriptions(dispatch);
     }, [])
 
     return (

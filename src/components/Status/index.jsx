@@ -8,7 +8,7 @@ import { Context } from '../../Context';
 import { turnRoomOff, turnRoomOn } from '../../api/rest';
 
 const Status = () => {
-    const [isActivelyPressed, setIsActivelyPressed] = React.useState({id: -1, active: false});
+    const [isActivelyPressed, setIsActivelyPressed] = React.useState({ id: -1, active: false });
     const { isDay, rooms, setIsLoading } = React.useContext(Context);
     return rooms.map((room, index) => {
         const inline = {
@@ -45,10 +45,11 @@ const Status = () => {
             onForString = `Last on: ${lastOn}`;
         }
         return (
-            <Flex 
+            <Flex
+                animate
                 onClick={() => {
                     handleChange({ on: room.on, id: room.id });
-                    animateActive({id: room.id, setIsActivelyPressed});
+                    animateActive({ id: room.id, setIsActivelyPressed });
                 }}
                 padding="10px"
                 direction="column"
@@ -59,8 +60,8 @@ const Status = () => {
                 width="calc(50% - 20px)"
                 margin="10px 10px"
                 borderRadius="10px"
-                className={classNames("cursor-hover status", { 
-                    "status-day": isDay, 
+                className={classNames("cursor-hover status", {
+                    "status-day": isDay,
                     "status-night": !isDay,
                     "status-day-active": isDay && isActivelyPressed.id === room.id && isActivelyPressed.active
                 })}
@@ -74,10 +75,10 @@ const Status = () => {
     )
 }
 
-const animateActive = ({id, setIsActivelyPressed}) => {
-    setIsActivelyPressed({id, active: true});
+const animateActive = ({ id, setIsActivelyPressed }) => {
+    setIsActivelyPressed({ id, active: true });
     setInterval(() => {
-        setIsActivelyPressed({id: -1, active: false});
+        setIsActivelyPressed({ id: -1, active: false });
     }, 200)
 }
 

@@ -11,6 +11,7 @@ const TitleAndDescription = (props) => {
             marginLeft: props.noMargin ? 0 : 10,
             color: props.titleColor ? props.titleColor : isDay ? DAY_COLOR : 'white',
             fontFamily: '"Fredoka One", cursive',
+            textAlign: props.textAlign,
         },
         icon: {
             display: 'flex',
@@ -22,6 +23,7 @@ const TitleAndDescription = (props) => {
             marginLeft: props.noMargin ? 0 : 10,
             color: props.secondaryColor ? props.secondaryColor : isDay ? DAY_COLOR_SECONDARY : 'white',
             fontFamily: '"Fredoka One", cursive',
+            textAlign: props.textAlign,
         }
     }
     return (

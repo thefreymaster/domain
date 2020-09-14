@@ -84,3 +84,12 @@ export const getHomebridgeAccessories = () => axios.get(`/api/homebridge/accesso
         // handle error
         console.log(error);
     })
+
+export const getWeather = (id) => axios.get(`/api/weather/${id}`)
+    .then(response => {
+        return response;
+    })
+    .catch(function (error) {
+        // handle error
+        console.log(error);
+    })

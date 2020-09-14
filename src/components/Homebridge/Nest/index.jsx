@@ -41,7 +41,6 @@ const Nest = () => {
     const [data] = thermostat;
     const [ecoData] = eco;
     const { values, serviceCharacteristics } = data;
-    console.log(data);
     return (
         <Flex direction="column" justifyContent="center" alignItems="center" margin="20px 0px 0px 0px">
             <Flex className={classNames({

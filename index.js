@@ -305,14 +305,24 @@ const getGroups = () => {
                         }).write();
                     })
                 }
-                getAnalytics({ newData, oldData: db.get('rooms').value() })
-                io.emit('groups_update', db.getState());
+                const oldDataFiltered = db.get('rooms').value().map(item => {
+                    return {
+                        id: item.id,
+                        on: item.on,
+                    }
+                })
+                var isDifferent = _.differenceWith(newData, oldDataFiltered, _.isEqual);
+                console.log({ isDifferent, length: isDifferent.length })
+                getAnalytics({ newData, oldData: db.get('rooms').value() });
+                if (isDifferent.length > 0) {
+                    io.emit('groups_update', db.getState());
+                }
                 getGroups();
             })
             .catch(function (error) {
                 console.log(error);
             })
-    }, 2000);
+    }, 1000);
 }
 
 app.get(`/api/rooms`, (req, res) => {
@@ -370,8 +380,8 @@ app.get(`/api/analytics`, (req, res) => {
 })
 
 const data = {
-    username: 'admin',
-    password: 'admin',
+    username: process.env.HOMEBRIDGE_USER_NAME,
+    password: process.env.HOMEBRIDGE_PASSWORD,
 };
 
 const config = {
@@ -390,8 +400,6 @@ const accessories = (token) => ({
         'Authorization': `Bearer ${token}`
     },
 })
-
-const legalTypes = ['TemperatureSensor', 'ProtocolInformation', 'Thermostat'];
 
 const filterTypes = (accessoriesToFilter, filterAttribute, type) => _.filter(accessoriesToFilter, (item) => {
     return item[filterAttribute].includes(type)
@@ -478,6 +486,20 @@ app.get(`/api/homebridge/accessories/all`, (req, res) => {
                     console.log(error);
                     res.send({ success: false, error: error });
                 })
+        })
+        .catch(function (error) {
+            console.log(error);
+            res.send({ success: false, error: error });
+        })
+})
+
+app.get(`/api/weather/:id`, (req, res) => {
+    const { id } = req.params;
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.OPENWEATHERMAP_TOKEN}&units=imperial`;
+    console.log({ url, id });
+    axios.get(url)
+        .then(function (response) {
+            res.send(response.data);
         })
         .catch(function (error) {
             console.log(error);
