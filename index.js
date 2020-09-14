@@ -380,8 +380,8 @@ app.get(`/api/analytics`, (req, res) => {
 })
 
 const data = {
-    username: 'admin',
-    password: 'admin',
+    username: process.env.HOMEBRIDGE_USER_NAME,
+    password: process.env.HOMEBRIDGE_PASSWORD,
 };
 
 const config = {
@@ -400,8 +400,6 @@ const accessories = (token) => ({
         'Authorization': `Bearer ${token}`
     },
 })
-
-const legalTypes = ['TemperatureSensor', 'ProtocolInformation', 'Thermostat'];
 
 const filterTypes = (accessoriesToFilter, filterAttribute, type) => _.filter(accessoriesToFilter, (item) => {
     return item[filterAttribute].includes(type)
