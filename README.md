@@ -29,3 +29,13 @@ HOMEBRIDGE_PASSWORD=homebridge password
 OPENWEATHERMAP_TOKEN=openweathermap api token
 
 ```
+
+## Run
+To run, cd to directory of clone, and start the server via
+```
+node index.js
+```
+To have Domain run in the background, use a process manager like `pm2` and run via
+```
+pm2 start index.js
+```
