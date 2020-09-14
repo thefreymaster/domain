@@ -21,7 +21,7 @@ const Branding = () => {
             <FontAwesomeIcon color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}
                 size="2x" icon={faHome} />
             <div style={{ marginTop: 10 }} />
-            <Title color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}>The Ranch</Title>
+            <Title color={isDay ? WHITE : NIGHT_BACKGROUND_COLOR}>Domain</Title>
         </Flex>
     )
 }

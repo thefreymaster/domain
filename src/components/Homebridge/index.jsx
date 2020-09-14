@@ -9,7 +9,7 @@ import GamingPC from './GamingPC';
 import Font from '../../common/Font';
 import { NIGHT_BACKGROUND_COLOR, WHITE } from '../../constants';
 import { faWindowClose, faTruckLoading, faSpinner } from '@fortawesome/free-solid-svg-icons';
-import System from './System';
+import Loader from 'react-loader-spinner'
 
 export const Homebridge = () => {
     const { dispatch, homebridge, isDay } = useLumenContext();
@@ -32,7 +32,14 @@ export const Homebridge = () => {
     if (!homebridge.system) {
         return (
             <Flex height="100%" direction="column" justifyContent="center" alignItems="center">
-                <FontAwesomeIcon color={isDay ? NIGHT_BACKGROUND_COLOR : WHITE} size="2x" icon={faSpinner} />
+                <Loader
+                    type="Puff"
+                    color="#fff"
+                    height={30}
+                    width={30}
+                    timeout={3000} //3 secs
+
+                />
             </Flex>
         )
     }
