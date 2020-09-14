@@ -83,6 +83,9 @@ const subscriptions = (dispatch) => {
     socket.on('accessories_update', (data) => {
         dispatch({ type: 'SET_HOMEBRIDGE_ACCESSORIES', payload: { accessories: data } })
     })
+    socket.on('weather_update', (data) => {
+        dispatch({ type: 'SET_WEATHER', payload: data })
+    })
 }
 
 export const Provider = (props) => {

@@ -493,13 +493,28 @@ app.get(`/api/homebridge/accessories/all`, (req, res) => {
         })
 })
 
+const getWeather = (id) => {
+    setTimeout(() => {
+        const url = `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.OPENWEATHERMAP_TOKEN}&units=imperial`;
+        axios.get(url)
+            .then(function (response) {
+                io.emit('weather_update', response.data);
+                getWeather(id);
+            })
+            .catch(function (error) {
+                console.log(error);
+                res.send({ success: false, error: error });
+            })
+    }, 60000);
+}
+
 app.get(`/api/weather/:id`, (req, res) => {
     const { id } = req.params;
     const url = `https://api.openweathermap.org/data/2.5/weather?id=${id}&appid=${process.env.OPENWEATHERMAP_TOKEN}&units=imperial`;
-    console.log({ url, id });
     axios.get(url)
         .then(function (response) {
             res.send(response.data);
+            getWeather(id);
         })
         .catch(function (error) {
             console.log(error);
