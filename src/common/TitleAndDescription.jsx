@@ -6,7 +6,7 @@ import { DAY_COLOR, DAY_COLOR_SECONDARY } from '../constants';
 const TitleAndDescription = (props) => {
     const { isDay } = React.useContext(Context);
     const inline = {
-        name: {
+        title: {
             fontSize: props.fontSize,
             marginLeft: props.noMargin ? 0 : 10,
             color: props.titleColor ? props.titleColor : isDay ? DAY_COLOR : 'white',
@@ -28,8 +28,8 @@ const TitleAndDescription = (props) => {
     }
     return (
         <Flex direction="column">
-            <Flex direction="row">
-                <div style={inline.name}>{props.title}</div>
+            <Flex direction="row" justifyContent={props.textAlign}>
+                <div style={inline.title}>{props.title}</div>
                 <div style={inline.icon}>{props.icon}</div>
             </Flex>
             <div style={inline.description}>{props.description}</div>

@@ -48,14 +48,12 @@ const Nest = () => {
                 'breath-animation-nest-heat': values.CurrentHeatingCoolingState === 1,
                 'breath-animation-nest-cool': values.CurrentHeatingCoolingState === 2,
             })}
-                // boxShadow
                 justifyContent="center"
                 alignItems="center"
                 height={isBrowser ? "160px" : "120px"}
                 width={isBrowser ? "160px" : "120px"}
                 borderRadius="160px"
-                // backgroundColor={isDay ? NIGHT_BACKGROUND_COLOR_CONTAINER : DAY_BACKGROUND_COLOR_CONTAINER}
-                style={{ border: "6px solid #e3e3e3", boxShadow: `inset 0px 0px 0px ${isTablet ? 10 : 15}px #333333` }}
+                style={{ border: "6px solid #e3e3e3", boxShadow: `inset 0px 0px 0px ${isTablet ? 10 : 15}px #272727` }}
             >
                 <Font color={isDay ? null : DAY_BACKGROUND_COLOR_CONTAINER} style={{ marginLeft: 10 }} fontSize={isTablet ? 36 : 48}>{convertToF(values.CurrentTemperature).toFixed(0)}°</Font>
             </Flex>

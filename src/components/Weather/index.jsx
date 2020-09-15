@@ -36,30 +36,36 @@ const Weather = () => {
                     textAlign="center"
                 />
             </Flex>
-            <Flex width="100%" direction="row" alignItems="center">
-                <TitleAndDescription
-                    noMargin
-                    fontSize={28}
-                    title={`${main.temp.toFixed(0)}°`}
-                    description="Temperature"
-                    textAlign="center"
-                />
+            <Flex width="100%" direction="row" alignItems="center" justifyContent="center">
+                <Flex width="33%" alignItems="center" justifyContent="center">
+                    <TitleAndDescription
+                        fontSize={28}
+                        title={`${main.pressure}mb`}
+                        description="Pressure"
+                        textAlign="center"
+                        noMargin
+                    />
+                </Flex>
                 <Flex style={{ flexGrow: 1 }} />
-                <TitleAndDescription
-                    fontSize={28}
-                    title={`${main.pressure}mb`}
-                    description="Pressure"
-                    textAlign="center"
-                    noMargin
-                />
+                <Flex width="33%" alignItems="center" justifyContent="center">
+                    <TitleAndDescription
+                        noMargin
+                        fontSize={28}
+                        title={`${main.temp.toFixed(0)}°`}
+                        description="Temperature"
+                        textAlign="center"
+                    />
+                </Flex>
                 <Flex style={{ flexGrow: 1 }} />
-                <TitleAndDescription
-                    fontSize={28}
-                    title={`${main.humidity}%`}
-                    description="Humidity"
-                    textAlign="center"
-                    noMargin
-                />
+                <Flex width="33%" alignItems="center" justifyContent="center">
+                    <TitleAndDescription
+                        fontSize={28}
+                        title={`${main.humidity}%`}
+                        description="Humidity"
+                        textAlign="center"
+                        noMargin
+                    />
+                </Flex>
             </Flex>
         </Flex>
     )

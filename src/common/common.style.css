@@ -1,5 +1,5 @@
 .background-transition{
-    transition: background-color 100ms ease-in-out;
+    transition: background-color 20ms ease-in-out;
 }
 
 .zoom-in-animation{

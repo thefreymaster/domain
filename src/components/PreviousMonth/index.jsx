@@ -14,7 +14,7 @@ const PreviousMonth = () => {
     const previousMonth = month === 0 ? 11 : month - 1;
     const housePreviousMonthAnalytics = context.house.analytics[previousMonth];
     const houseMonthAnalytics = context.house.analytics[month];
-    const change = ((housePreviousMonthAnalytics.totalTimeOn / houseMonthAnalytics.totalTimeOn).toFixed(2) * 100);
+    const change = (((houseMonthAnalytics.totalTimeOn - housePreviousMonthAnalytics.totalTimeOn) / housePreviousMonthAnalytics.totalTimeOn).toFixed(2) * 100);
     return (
         <TitleAndDescription
             fontSize={28}
