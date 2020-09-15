@@ -24,22 +24,24 @@ const Weather = () => {
     return (
 
         <Flex direction="column" width="100%">
-            <Flex width="100%" direction="column" alignItems="center">
-                <TitleAndDescription
-                    noMargin
-                    fontSize={28}
-                    title={<img style={{
-                        width: 70
-                    }} src={`http://openweathermap.org/img/wn/${forcast.icon}@4x.png`} />
-                    }
-                    description={`${forcast.main}, ${forcast.description}`}
-                    textAlign="center"
-                />
-                <TitleAndDescription
-                    noMargin
-                    description={`Feels like ${main.feels_like.toFixed(0)}°`}
-                    textAlign="center"
-                />
+            <Flex width="100%" direction="row" alignItems="center" justifyContent="center" padding="0px 0px 10px 0px">
+                <img style={{
+                    width: 70
+                }} src={`http://openweathermap.org/img/wn/${forcast.icon}@4x.png`} />
+                <Flex direction="column">
+                    <TitleAndDescription
+                        noMargin
+                        fontSize={28}
+                        description={`${forcast.main}, ${forcast.description}`}
+                        textAlign="center"
+                    />
+                    <TitleAndDescription
+                        noMargin
+                        description={`Feels like ${main.feels_like.toFixed(0)}°`}
+                        textAlign="center"
+                    />
+                </Flex>
+
             </Flex>
             <Flex width="100%" direction="row" alignItems="center" justifyContent="center">
                 <Flex width="33%" alignItems="center" justifyContent="center">
