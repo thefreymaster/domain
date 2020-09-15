@@ -35,6 +35,11 @@ const Weather = () => {
                     description={`${forcast.main}, ${forcast.description}`}
                     textAlign="center"
                 />
+                <TitleAndDescription
+                    noMargin
+                    description={`Feels like ${main.feels_like.toFixed(0)}°`}
+                    textAlign="center"
+                />
             </Flex>
             <Flex width="100%" direction="row" alignItems="center" justifyContent="center">
                 <Flex width="33%" alignItems="center" justifyContent="center">

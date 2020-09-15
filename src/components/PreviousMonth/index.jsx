@@ -18,7 +18,7 @@ const PreviousMonth = () => {
     return (
         <TitleAndDescription
             fontSize={28}
-            title={`${change === -100 ? 'N/A' : `${change}%`}`}
+            title={`${change === -100 ? 'N/A' : `${change.toFixed(0)}%`}`}
             titleColor={change > 0 ? '#f95858' : '#70e993'}
             icon={<FontAwesomeIcon size="2x" style={{ color: change > 0 ? '#f95858' : '#70e993' }} icon={change === -100 ? faCaretRight : change > 1 ? faCaretUp : faCaretDown} />}
             description={change === -100 ? "Check back next month" : "Change since last month"}
