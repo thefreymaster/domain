@@ -1,5 +1,5 @@
 # Domain
-Domain is a smart home IoT platform, integrating the Homebridge API, and Philips Hue API together. Also tracks analytics of Hue light usage.
+Domain is a smart home IoT platform, integrating the Homebridge API, and Philips Hue API together, and actively tracks Hue light usage, stored in local json db.
 
 ## Clone and Install
 ```
