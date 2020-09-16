@@ -1,6 +1,7 @@
 # Domain
 Domain is a smart home IoT platform, integrating the Homebridge API, and Philips Hue API together, and actively tracks Hue light usage, stored in local json db.
 
+
 ## Clone and Install
 ```
 git clone https://github.com/thefreymaster/domain.git
