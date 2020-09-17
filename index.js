@@ -22,6 +22,7 @@ const io = require('socket.io')(server);
 
 const port = 6700;
 const POWER_PER_HOUR = 0.0003;
+const AUSTIN_ENERGY_ADJUSTED_RATE_KW = 0.0072325;
 
 const defaultMonths = [
     {
@@ -100,13 +101,6 @@ const setRoomTimeOn = (room) => {
         .write();
 }
 
-const setRoomTimeToNone = (room) => {
-    db.get('rooms')
-        .find({ id: room.id })
-        .assign({ lastOn: null })
-        .write();
-}
-
 const setHouseTimeOn = (timeOn, room) => {
     const month = new Date().getMonth();
     const house = db.get('house')
@@ -141,7 +135,6 @@ const getAnalytics = ({ newData, oldData }) => {
             }
         }
     })
-    // console.log({ newData, oldData })
 }
 
 const getGroups = () => {
@@ -162,7 +155,6 @@ const getGroups = () => {
                         on: group.action.on,
                     }
                 })
-                // console.log(compactGroups)
                 if (!db.has('rooms').value()) {
                     db.defaults({
                         rooms: [],
