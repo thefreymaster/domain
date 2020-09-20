@@ -1,10 +1,9 @@
 import React from 'react';
-import _ from 'lodash';
 import { useLumenContext } from '../../../Context';
-import { convertToF, filterTypes } from '../../../utils';
+import { convertToF } from '../../../utils';
 import Flex from '../../../common/Flex';
 import Font from '../../../common/Font';
-import { DAY_BACKGROUND_COLOR_CONTAINER, RED, BLUE, NIGHT_BACKGROUND_COLOR, NIGHT_BACKGROUND_COLOR_CONTAINER } from '../../../constants';
+import { DAY_BACKGROUND_COLOR_PILL, NIGHT_BACKGROUND_COLOR_PILL } from '../../../constants';
 
 const Temperatures = () => {
     const { homebridge, isDay } = useLumenContext();
@@ -18,7 +17,7 @@ const Temperatures = () => {
                         <Font fontSize="10px">{serviceName}</Font>
                         <Flex
                             style={{ border: "3px solid #e3e3e3" }}
-                            borderRadius="60px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="60px" height="60px">
+                            borderRadius="60px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_PILL : NIGHT_BACKGROUND_COLOR_PILL} direction="column" direction="column" justifyContent="center" alignItems="center" width="60px" height="60px">
                             <Font style={{ marginLeft: 2 }}>{convertToF(temperature.values.CurrentTemperature).toFixed(0)}°</Font>
                         </Flex>
                     </Flex>

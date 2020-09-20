@@ -4,7 +4,7 @@ import { useLumenContext } from '../../../Context';
 import { convertToF, filterTypes } from '../../../utils';
 import Flex from '../../../common/Flex';
 import Font from '../../../common/Font';
-import { DAY_BACKGROUND_COLOR_CONTAINER, RED, BLUE, NIGHT_BACKGROUND_COLOR, NIGHT_BACKGROUND_COLOR_CONTAINER, DAY_COLOR_SECONDARY } from '../../../constants';
+import { DAY_BACKGROUND_COLOR_CONTAINER, RED, BLUE, NIGHT_BACKGROUND_COLOR, NIGHT_BACKGROUND_COLOR_CONTAINER, DAY_COLOR_SECONDARY, DAY_BACKGROUND_COLOR_PILL, NIGHT_BACKGROUND_COLOR_PILL } from '../../../constants';
 import './nest.style.css';
 import { isTablet, isBrowser } from 'react-device-detect';
 
@@ -61,20 +61,20 @@ const Nest = () => {
             <Flex direction="row" margin="10px">
                 <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px 0px 5px 0px">
                     <Font fontSize="10px">Target</Font>
-                    <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
+                    <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_PILL : NIGHT_BACKGROUND_COLOR_PILL} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
                         <Font>{convertToF(values.TargetTemperature).toFixed(0)}°</Font>
                     </Flex>
                 </Flex>
                 <Flex direction="column" justifyContent="center" alignItems="center" width="75px" margin="5px">
                     <Font fontSize="10px">Status</Font>
-                    <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="75px">
+                    <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_PILL : NIGHT_BACKGROUND_COLOR_PILL} direction="column" direction="column" justifyContent="center" alignItems="center" width="75px">
                         <Font>{getHeatCoolStatus(values.CurrentHeatingCoolingState)}</Font>
                     </Flex>
                 </Flex>
                 {isBrowser &&
                     <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px">
                         <Font fontSize="10px">Eco</Font>
-                        <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
+                        <Flex style={{ border: "3px solid #e3e3e3" }} borderRadius="50px" backgroundColor={isDay ? DAY_BACKGROUND_COLOR_PILL : NIGHT_BACKGROUND_COLOR_PILL} direction="column" direction="column" justifyContent="center" alignItems="center" width="45px">
                             <Font>{ecoData.values.On ? "Yes" : "No"}</Font>
                         </Flex>
                     </Flex>

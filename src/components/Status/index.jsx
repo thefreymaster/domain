@@ -3,9 +3,10 @@ import classNames from 'classnames';
 import TitleAndDescription from '../../common/TitleAndDescription';
 import { POWER_PER_HOUR, getHours } from '../../utils';
 import Flex from '../../common/Flex';
-import './status.css';
+import './status.scss';
 import { Context } from '../../Context';
 import { turnRoomOff, turnRoomOn } from '../../api/rest';
+import { DAY_COLOR, NIGHT_COLOR } from '../../constants';
 
 const Status = () => {
     const [isActivelyPressed, setIsActivelyPressed] = React.useState({ id: -1, active: false });
@@ -56,9 +57,9 @@ const Status = () => {
                 justifyContent="center"
                 alignItems="center"
                 height="calc(33% - 20px)"
-                width="calc(50% - 20px)"
-                margin="10px 10px"
-                borderRadius="2px"
+                width="calc(100% - 20px)"
+                margin="10px 10px 0px 10px"
+                borderRadius="4px"
                 className={classNames("cursor-hover status", {
                     "status-day": isDay,
                     "status-night": !isDay,

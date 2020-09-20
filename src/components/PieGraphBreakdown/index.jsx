@@ -20,6 +20,7 @@ const Breakdown = () => {
         }
         return roomData;
     })
+
     const theme = {
         textColor: '#eee',
         fontSize: '14px',

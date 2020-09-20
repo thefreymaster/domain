@@ -4,6 +4,9 @@ export const GREY = "#333333";
 export const NIGHT_BACKGROUND_COLOR_CONTAINER = "#1d1d1d";
 export const DAY_BACKGROUND_COLOR_CONTAINER = "#ededed"
 
+export const NIGHT_BACKGROUND_COLOR_PILL = "#383838";
+export const DAY_BACKGROUND_COLOR_PILL = "#fff"
+
 export const WHITE = "#fff";
 export const NIGHT_BACKGROUND_COLOR = "#333333";
 
