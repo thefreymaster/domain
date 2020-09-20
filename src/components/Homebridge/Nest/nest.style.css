@@ -6,6 +6,10 @@
     color: white !important;
 }
 
+.nest-off{
+    background-color: white;
+}
+
 @keyframes breath-nest-cool{
     from {background-color: #05f;}
     50% {background-color: #0084ff;}

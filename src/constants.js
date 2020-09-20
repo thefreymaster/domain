@@ -17,3 +17,6 @@ export const NIGHT_BOX_SHADOW = `0 2px 1px -1px #00000080, 0 1px 1px 0 rgba(0,0,
 
 export const RED = "#ff7474";
 export const BLUE = "#0092ff";
+
+export const DAY_BORDER = "1px solid #ffffff1a";
+export const NIGHT_BORDER = "1px solid #00000014";

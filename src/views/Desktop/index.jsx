@@ -23,32 +23,32 @@ const Desktop = () => {
         return (
             <Container backgroundColor={isDay ? DAY_BACKGROUND_COLOR_CONTAINER : NIGHT_BACKGROUND_COLOR_CONTAINER}>
                 <Flex width="23%">
-                    <Flex direction="column" alignItems="flex-start" borderRadius="3px 10px 10px" width="100%" margin="10px 10px 10px 10px" backgroundColor={dayNightBackgroundColor} boxShadow>
+                    <Flex direction="column" alignItems="flex-start" width="100%" borderRight>
                         <Branding />
                         <Flex direction="column" width="100%" height="100%" padding="0px 10px">
                             <Homebridge />
                         </Flex>
                     </Flex>
                 </Flex>
-                <Flex width="77%" margin="10px 10px 10px 0px">
-                    <Flex height="100%" width="33%" margin="0px 10px 0px 0px" direction="column">
-                        <Flex animate borderRadius="3px 10px 10px" padding="20px" height="200px" width="100%" backgroundColor={dayNightBackgroundColor} boxShadow>
+                <Flex width="77%">
+                    <Flex height="100%" width="33%" direction="column" borderRight>
+                        <Flex animate padding="20px" height="200px" width="100%" borderBottom>
                             <Weather />
                         </Flex>
-                        <Flex wrap borderRadius="3px 10px 10px" justifyContent="flex-start" direction="row" padding="10px" height="calc(100% - 120px)" width="calc(100%)" margin={`10px 0px 0px 0px`} backgroundColor={dayNightBackgroundColor} boxShadow>
+                        <Flex wrap justifyContent="flex-start" direction="row" height="calc(100% - 120px)" width="calc(100%)">
                             <Status />
                         </Flex>
                     </Flex>
-                    <Flex height="100%" width="66%" direction="column">
-                        <Flex direction="row">
-                            <Flex animate borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="0px 10px 0px 0px" backgroundColor={dayNightBackgroundColor} boxShadow>
+                    <Flex height="100%" width="67%" direction="column">
+                        <Flex direction="row" borderBottom>
+                            <Flex animate padding="20px" height="100px" width="50%" borderRight>
                                 <LightMetrics />
                             </Flex>
-                            <Flex animate borderRadius="3px 10px 10px" padding="20px" height="100px" width="50%" margin="0px 0px 0px 0px" backgroundColor={dayNightBackgroundColor} boxShadow>
+                            <Flex animate padding="20px" height="100px" width="50%" margin="0px 0px 0px 0px">
                                 <PreviousMonth />
                             </Flex>
                         </Flex>
-                        <Flex borderRadius="3px 10px 10px" padding="20px" height="calc(100% - 110px)" width="100%" margin="10px 0px 0px 0px" backgroundColor={dayNightBackgroundColor} boxShadow>
+                        <Flex padding="20px" height="calc(100% - 110px)" width="100%" margin="10px 0px 0px 0px">
                             <Breakdown />
                         </Flex>
                     </Flex>

@@ -2,10 +2,16 @@ import React from 'react';
 import classNames from 'classnames';
 import Title from './Title';
 import { Context } from '../Context';
-import { DAY_BOX_SHADOW, NIGHT_BOX_SHADOW } from '../constants';
+import { DAY_BOX_SHADOW, NIGHT_BOX_SHADOW, DAY_BORDER, NIGHT_BORDER } from '../constants';
 
 const Flex = (props) => {
     const { isDay } = React.useContext(Context);
+    const determineBorder = () => {
+        if(!isDay){
+            return DAY_BORDER;
+        }
+        return NIGHT_BORDER;
+    }
 
     const inline = {
         display: 'flex',
@@ -23,6 +29,11 @@ const Flex = (props) => {
         padding: props.padding,
         flexWrap: props.wrap && 'wrap',
         textAlign: props.textAlign,
+        borderTop: props.borderTop && determineBorder(),
+        borderRight: props.borderRight && determineBorder(),
+        borderBottom: props.borderBottom && determineBorder(),
+        borderLeft: props.borderLeft && determineBorder(),
+        
         ...props.style,
     }
     return (

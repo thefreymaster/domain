@@ -45,6 +45,7 @@ const Nest = () => {
     return (
         <Flex direction="column" justifyContent="center" alignItems="center" margin="20px 0px 0px 0px">
             <Flex className={classNames({
+                'nest-off': values.CurrentHeatingCoolingState === 0,
                 'breath-animation-nest-heat': values.CurrentHeatingCoolingState === 1,
                 'breath-animation-nest-cool': values.CurrentHeatingCoolingState === 2,
             })}
@@ -55,7 +56,7 @@ const Nest = () => {
                 borderRadius="160px"
                 style={{ border: "6px solid #e3e3e3", boxShadow: `inset 0px 0px 0px ${isTablet ? 10 : 15}px #272727` }}
             >
-                <Font color={isDay ? null : DAY_BACKGROUND_COLOR_CONTAINER} style={{ marginLeft: 10 }} fontSize={isTablet ? 36 : 48}>{convertToF(values.CurrentTemperature).toFixed(0)}°</Font>
+                <Font color={NIGHT_BACKGROUND_COLOR} style={{ marginLeft: 10 }} fontSize={isTablet ? 36 : 48}>{convertToF(values.CurrentTemperature).toFixed(0)}°</Font>
             </Flex>
             <Flex direction="row" margin="10px">
                 <Flex direction="column" justifyContent="center" alignItems="center" width="45px" margin="5px 0px 5px 0px">

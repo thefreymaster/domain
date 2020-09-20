@@ -51,7 +51,6 @@ const Status = () => {
                     handleChange({ on: room.on, id: room.id });
                     animateActive({ id: room.id, setIsActivelyPressed });
                 }}
-                padding="10px"
                 direction="column"
                 // style={{ border: determineBorder(isDay) }}
                 justifyContent="center"
@@ -59,7 +58,7 @@ const Status = () => {
                 height="calc(33% - 20px)"
                 width="calc(50% - 20px)"
                 margin="10px 10px"
-                borderRadius="10px"
+                borderRadius="2px"
                 className={classNames("cursor-hover status", {
                     "status-day": isDay,
                     "status-night": !isDay,
